@@ -12,7 +12,6 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
-            echo "<h1> prueba4 </h1>"
         ?>
     </body>
 </html>
