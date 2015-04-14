@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>I Edición CEIIE | Granada, 1-3 Julio</title>
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        <div class="container">
+            <div id="menuSuperior">
+                <?php
+                include './php/header.php';
+                ?>
+            </div>
+            <div class="slider">
+                <!--contexmenu.php-->
+            </div>
+            <div class="mainContentIndex">
+                <!--content.php-->
+            </div>
+            <footer>
+                <!--footer.php-->
+            </footer>
+        </div>
+
     </body>
 </html>
