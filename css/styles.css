@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+body {
+    font-family: 'Gentium Basic', serif;
+    font-size: 17px;
+    background: url(../images/siteBackground.jpg) repeat;
+    color: black;
+}
+a {
+    color: #0088d0;
+    text-decoration: underline;
+}
+
+.cursiva{
+    font-style: italic;
+    font-size: 18px;
+}
+
+p {
+    line-height: 140%;
+    margin-bottom: 15px;
+}
+h2 {
+    font-size: 21px;
+    color: #160000;
+}
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+header h1 {
+    float: left;
+    padding: 75px 0 0 0;
+    color: #160000;
+}
+header h1 a {
+    font-size: 36px;
+    color: #160000;
+    text-decoration: none;
+}
+.boxes {
+    background: url(../images/contentBackground.jpg) repeat;
+    border: 1px solid #bbbbbb;
+    padding: 30px;
+    margin-top: 30px;
+}
+.box {
+    width: 233px;
+    float: left;
+    padding: 0 32px;
+}
+.box h2,
+.mainContent h2 {
+    padding: 20px 0;
+}
+.box img {
+    max-width: 100%;
+    display: block;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 3px 4px 0px #939393;
+}
+.box p {
+    margin-bottom: 20px;
+}
+.box p a {
+    background: #18bbff;
+    text-shadow: none;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 3px #0695d1;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    float: right;
+}
+.box p a:hover {
+    background: #0695d1;
+    text-shadow: none;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 3px #007fb4;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    float: right;
+}
+.mainContent {
+    width: 100%;
+    padding: 20px 0 20px 0;
+}
+.mainContent img {
+    max-width: 100%;
+    display: block;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 3px 4px 0px #939393;
+}
+
+.mainContent ul{
+    margin-left: 20px;
+}
+
+.centrada{
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.floatRight{
+    float: right;
+    margin: 0 0 10px 25px;
+}
+#floatRightMapa{
+    float: right;
+    margin: 10px 0 10px 25px;
+    border: 0;
+}
+footer {
+    background: url(../images/contentBackground.jpg) repeat;
+    border-top: 1px solid #bbbbbb;
+    margin: 0 0 50px 0;
+}
+footer p {
+    text-align: center;
+    padding: 30px;
+}
+.clearfloat {
+    clear: both;
+    height: 0;
+    font-size: 1px;
+    line-height: 0px;
+    margin-bottom: 20px;
+}
+.pictureMain img {
+    max-width: 100%;
+    display: block;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 3px 4px 0px #939393;
+}
+/* para que los enlaces locales ya visitados dentro de una misma página aparezcan negros y sin subrayar */
+.enlaceLocal {
+    color: #000000;
+    text-decoration: none;
+}
+.mainContentIndex{
+    width: 70%;
+    margin: 0 0px 0 0;
+    padding: 20px 0 20px 0;
+}
+.mainContentIndex h2{
+    padding: 20px 0;
+}
+/* estilos slider */
+.slider{
+    padding: 40px 0 20px 0;
+    width: 30%;
+    float: right;
+    position: relative;
+}
+.slider h2{
+    text-align: center;
+}
+.slider img{
+    margin: 50px 20px 0 50px;
+    max-width: 80%;
+    max-height: 100px;
+}
+
+/* estilos formulario */
+.formulario h2 {
+    text-align: center;
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-radius: 5px;
+    display: block;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 5px;
+    text-shadow: 1px 1px 1px #CCCCCC;
+    width: 433px;
+}
+.formulario ul {
+    list-style-type:none;
+}
+.formulario li{
+    padding:12px; 
+    position:relative;
+}
+.formulario label {
+    color: #555555;
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    margin-top: 3px;
+    padding: 3px;
+    width: 90px;
+}
+.formulario input {
+    height:20px; 
+    width:325px; 
+    padding:5px 8px;
+}
+.formulario textarea {
+    padding:8px; 
+    width:325px;
+}
+.formulario button {
+    margin-left:125px;
+}
+/* estilos botones formulario */
+button.submit {
+    padding: 9px 17px;
+    font-weight: bold;
+    line-height: 1;
+    color: #444;
+    border: none;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#bbb));
+    background-image: -moz-linear-gradient(0% 100% 90deg, #BBBBBB, #FFFFFF);
+    background-color: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+button.submit:hover {
+    opacity:.55;
+    cursor: pointer; 
+    color: #fff;
+}
+button.submit:active {
+    border: 1px solid #222;
+    box-shadow: 0 0 10px 5px #444 inset; 
+}
+/*--------------------------------------------------------------------------------------------*/
+/********* begin MAIN NAV ********/
+/*--------------------------------------------------------------------------------------------*/
+
+#menuSuperior {
+    float: right;
+    padding: 15px;
+}
+
+#navlist li {
+    list-style: none;
+}
+
+#navlist li a{  /**/
+    background-color: #CCCCCC;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 2px;
+    display: block; 
+}
+
+#active{
+    border-radius: 5px 5px 5px 5px;
+    background-color: #5555ff;
+}
+
+#navlist li a:hover{ /**/
+    background-color: #18bbff;
+    color: white;
+}
+
+#navlist > li{ /**/
+    float:left;
+}
+
+#navlist li ul{ /**/
+    display: none;
+    position: absolute;
+    min-width: 140px;
+}
+
+#navlist li:hover > ul{ /**/
+    display: block;
+    z-index: 999;
+}
