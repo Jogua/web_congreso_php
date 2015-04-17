@@ -1,46 +1,47 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
-
-
-<header>
-    <h1>I Congreso de Estudiantes de Ingeniería Informática en España</h1>
-    <div id="menuSuperior">
-        <ul id="navlist">
-            <li id="active"><a href="index.html">Inicio</a>
-            </li>
-            <li><a href="html/inscribete.html">Inscríbete</a>
-            </li>
-            <li><a>Programa</a>
-                <ul>
-                    <li> <a href="html/actividades.html">Actividades</a> </li>
-                    <li> <a href="html/ponencias.html">Ponencias</a> </li>
-                </ul>
-            </li>
-            <li><a href="html/sobre_granada.html">Sobre Granada</a>
-                <ul>
-                    <li> <a href="html/que_visitar.html">Qué visitar </a> </li>
-                    <li> <a href="html/etsiit.html">ETSIIT </a> </li>
-                </ul>
-            </li>
-            <li><a href="html/como_llegar.html">Como llegar</a>
-                <ul>
-                    <li> <a href="html/localizacion.html#autobus">Autobús</a> </li>
-                    <li> <a href="html/localizacion.html#renfe">Tren</a> </li>
-                    <li> <a href="html/localizacion.html#aeropuerto">Avión</a> </li>
-                </ul>
-            </li>
-            <li><a href="html/patrocinio.html">Patrocinio</a>
-            </li>
-            <li><a href="html/acerca_de.html">Acerca de</a>
-            </li>
-            <li><a href="html/contacto.html">Contacto</a>
-            </li>
+<ul id="navlist">
+    <?php
+        if ($_SERVER["REQUEST_URI"] == "/web_congreso_php/index.php?seccion=presentacion") {
+            echo '<li id="active">';
+        } else {
+            echo '<li>';
+        }
+    ?>
+        
+        <a href="index.php?seccion=presentacion">Inicio</a>
+    </li>
+    <li><a href="index.php?seccion=inscribete">Inscríbete</a>
+    </li>
+    <li><a>Programa</a>
+        <ul>
+            <li> <a href="index.php?seccion=actividades">Actividades</a> </li>
+            <li> <a href="index.php?seccion=ponencias">Ponencias</a> </li>
         </ul>
-    </div>
-    <br class="clearfloat" />
-</header>
+    </li>
+    <li><a href="index.php?seccion=sobre_granada">Sobre Granada</a>
+        <ul>
+            <li> <a href="index.php?seccion=que_visitar">Qué visitar </a> </li>
+            <li> <a href="index.php?seccion=etsiit">ETSIIT </a> </li>
+        </ul>
+    </li>
+    <li><a href="index.php?seccion=como_llegar">Como llegar</a>
+        <ul>
+            <li> <a href="index.php?seccion=localizacion#autobus">Autobús</a> </li>
+            <li> <a href="index.php?seccion=localizacion#renfe">Tren</a> </li>
+            <li> <a href="index.php?seccion=localizacion#aeropuerto">Avión</a> </li>
+        </ul>
+    </li>
+    <li><a href="index.php?seccion=patrocinio">Patrocinio</a>
+    </li>
+    <li><a href="index.php?seccion=acerca_de">Acerca de</a>
+    </li>
+    <li><a href="index.php?seccion=contacto">Contacto</a>
+    </li>
+</ul>
+
+<?php
+//$nombre_archivo = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
+//echo "Parametro es :" . $nombre_archivo . "<br />";
+//$url_actual = $_SERVER["REQUEST_URI"];
+//
+//echo "<b>$url_actual</b>";
+?>
