@@ -49,7 +49,7 @@ header h1 a {
 }
 .box {
     width: 233px;
-    float: right;
+    float: left;
     padding: 0 32px;
 }
 .box h2,

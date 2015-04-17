@@ -12,7 +12,7 @@
     <body>
         <div class="container">
             <header>
-                <h1>I Congreso de Estudiantes de Ingeniería Informática en España</h1>
+                <img src="images/cabecera.png" alt="Logo Congreso" />
                 <div id="menuSuperior">
                     <?php
                     if (empty($_GET['seccion'])) {
