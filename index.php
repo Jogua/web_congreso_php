@@ -15,9 +15,15 @@
                 <h1>I Congreso de Estudiantes de Ingeniería Informática en España</h1>
                 <div id="menuSuperior">
                     <?php
+                    if (empty($_GET['seccion'])) {
+                        $seccion = "presentacion";
+                    } else {
+                        $seccion = $_GET['seccion'];
+                    }
                     include './php/header.php';
                     ?>
                 </div>
+                <br class="clearfloat" />
             </header>
             <div class="barraDerecha">
                 <?php
@@ -27,14 +33,13 @@
             </div>
             <div class="mainContent">
                 <?php
-//                echo $HTTP_GET_VARS["seccion"];
-//                $parametro1=$_GET['seccion'];
-                if (empty($_GET['seccion'])) {
-                    $seccion = "presentacion";
+                if ($seccion != "detalle_visita") {
+                    $direccion = './html/' . $seccion . '.html';
                 } else {
-                    $seccion = $_GET['seccion'];
+                    $visita = $_GET["visita"];
+                    $direccion = './php/detalle_visita.php';
                 }
-                $direccion = './html/' . $seccion . '.html';
+
 //                echo "El Primer Parametro es :" . $seccion . "<br />";
 //                $direccion = $HTTP_GET_VARS["seccion"];
                 include $direccion;

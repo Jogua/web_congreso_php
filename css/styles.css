@@ -115,7 +115,8 @@ header h1 a {
 }
 #floatMapa{
     float: none ;
-    margin-left: 125px;
+    margin-top: 20px;
+    margin-left: 40px;
     border: 0;
 }
 footer {
@@ -243,8 +244,8 @@ button.submit:active {
 /*--------------------------------------------------------------------------------------------*/
 
 #menuSuperior {
-    float: right;
-    padding: 25px;
+    /*float: right;*/
+    padding: 50px;
 }
 
 #navlist li {
@@ -259,7 +260,7 @@ button.submit:active {
     padding: 10px 15px;
     border-radius: 5px 5px 5px 5px;
     margin: 2px;
-    display: block; 
+    display: block;     
 }
 
 #active{
