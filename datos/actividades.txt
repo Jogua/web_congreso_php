@@ -1,0 +1,34 @@
+#nombre
+Visita a la Alhambra
+#imagen
+images/visita_alhambra.jpg
+#fecha
+2 de Julio
+#descripción de la actividad
+
+La Alhambra es una ciudad palatina andalusí situada en Granada, España. Formada por un conjunto de palacios,
+jardines y fortaleza (alcázar o al-qasr القصر) que albergaba una verdadera ciudadela dentro de la propia ciudad
+de Granada, que servía como alojamiento al monarca y a la corte del Reino nazarí de Granada. Su verdadero atractivo,
+como en otras obras musulmanas de la época, no sólo radica en los interiores, cuya decoración está entre las cumbres
+del arte andalusí, sino también en su localización y adaptación, generando un paisaje nuevo pero totalmente integrado
+con la naturaleza preexistente.
+
+En 2011 se convirtió en el monumento más visitado de España, recibiendo la cifra
+histórica de 2 310 764 visitantes.
+
+
+#nombre
+Visita a Sierra Nevada
+#imagen
+images/visita_sierra_nevada.jpg
+#fecha
+1 de Julio
+#descripción de la actividad
+
+La Estación de Esquí y Montaña de Sierra Nevada está situada en el Parque Natural de Sierra Nevada, en el Sistema
+Penibético, en los términos municipales de Monachil y de Dílar (partido judicial y provincia de Granada, España).
+Fue conocida durante sus primeros años como Estación de Esquí Solynieve, nombre ya en desuso.
+
+La estación fue sede del Campeonato Mundial de Esquí Alpino de 1996, así como de varias pruebas de la Copa del Mundo
+de Esquí Alpino, de cuya competición acogió su primera final en el año 1977. Además, ha sido candidata como sede principal
+a los Juegos Olímpicos de Invierno.
