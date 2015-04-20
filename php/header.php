@@ -72,12 +72,3 @@ destacar($seccion == "patrocinio" || $seccion == "acerca_de" || $seccion == "con
         </li>
     </ul>
 </li>
-
-
-<?php
-//$nombre_archivo = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
-//echo "Parametro es :" . $nombre_archivo . "<br />";
-//$url_actual = $_SERVER["REQUEST_URI"];
-//
-//echo "<b>$url_actual</b>";
-?>

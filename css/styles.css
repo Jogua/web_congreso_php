@@ -61,6 +61,7 @@ header h1 a {
     display: block;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 3px 4px 0px #939393;
+    margin-top: 25px
 }
 .box p {
     margin-bottom: 20px;
@@ -147,6 +148,7 @@ footer p {
     display: block;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 3px 4px 0px #939393;
+    margin-top: 25px
 }
 /* para que los enlaces locales ya visitados dentro de una misma página 
 aparezcan negros y sin subrayar */
@@ -312,8 +314,7 @@ button.submit:active {
 /*--------------------------------------------------------------------------------------------*/
 
 #menuSuperior {
-    /*float: right;*/
-    padding: 50px;
+    padding: 20px 0px 20px 50px;
 }
 
 #navlist li {
