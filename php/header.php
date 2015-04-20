@@ -1,7 +1,7 @@
 <?php
 
-function destacar($seccion, $sec) {
-    if ($seccion == $sec) {
+function destacar($activo) {
+    if ($activo) {
         echo '<li id="active">';
     } else {
         echo '<li>';
@@ -11,28 +11,33 @@ function destacar($seccion, $sec) {
 
 <ul id="navlist">
     <?php
-    destacar($seccion, "presentacion");
+    destacar($seccion == "presentacion");
     ?>
     <a href="index.php?seccion=presentacion">Inicio</a>
 </li>
 <?php
-destacar($seccion, "inscribete");
+destacar($seccion == "inscribete");
 ?>
 <a href="index.php?seccion=inscribete">Inscríbete</a>
 </li>
-<li>
+<?php
+destacar($seccion == "actividades" || $seccion == "detalle_visita");
+?>
 <a href="index.php?seccion=actividades">Actividades</a> 
 <ul>
     <li> <a href="index.php?seccion=detalle_visita&visita=alhambra">Visita Alhambra</a> </li>
     <li> <a href="index.php?seccion=detalle_visita&visita=sierra">Visita Sierra Nevada</a> </li>
 </ul>
 </li>
-    
-<li> <a href="index.php?seccion=ponencias">Ponencias</a> </li>
 
-</li>
 <?php
-destacar($seccion, "sobre_granada");
+destacar($seccion == "ponencias");
+?>
+<a href="index.php?seccion=ponencias">Ponencias</a>
+</li>
+
+<?php
+destacar($seccion == "sobre_granada" || $seccion == "que_visitar" || $seccion == "etsiit");
 ?>
 <a href="index.php?seccion=sobre_granada">Sobre Granada</a>
 <ul>
@@ -40,8 +45,9 @@ destacar($seccion, "sobre_granada");
     <li> <a href="index.php?seccion=etsiit">ETSIIT </a> </li>
 </ul>
 </li>
+
 <?php
-destacar($seccion, "como_llegar");
+destacar($seccion == "como_llegar" || $seccion == "localizacion");
 ?>
 <a href="index.php?seccion=como_llegar">Como llegar</a>
 <ul>
@@ -50,7 +56,11 @@ destacar($seccion, "como_llegar");
     <li> <a href="index.php?seccion=localizacion#aeropuerto">Avión</a> </li>
 </ul>
 </li>
-<li>
+
+
+<?php
+destacar($seccion == "patrocinio" || $seccion == "acerca_de" || $seccion == "contacto")
+?>
     <a>Más información</a>
     <ul>
         <li>
