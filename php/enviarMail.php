@@ -30,13 +30,9 @@ $headers = "From: $from\n";
 $headers .= "MIME-Version: 1.0\n";
 $headers .= "Content-type: text/html; charset=UTF-8\n";
 
-//$mail->From = $from;
-
 $mail->From = "congresoCEIIE@gmail.com";
 $mail->FromName = "CONGRESO CEIIE";
         
-//$mail->FromName = $fromname;
-//$mail->AddAddress($to);
 $mail->AddAddress($remitente);
 $mail->AddAddress($mail->From);
 
@@ -57,17 +53,6 @@ if (!$mail->Send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
     exit;
 }
-
-//Mensaje que se envía al congreso
-//$mail->From = $from;
-//$mail->FromName = $fromname;
-//$mail->AddAddress($to);
-//
-//if (!$mail->Send()) {
-//    echo "Message could not be sent. <p>";
-//    echo "Mailer Error: " . $mail->ErrorInfo;
-//    exit;
-//}
 
 header('Location: ../index.php?seccion=contacto')
 ?>
