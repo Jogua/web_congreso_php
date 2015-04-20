@@ -28,17 +28,17 @@ while (!feof($file)) {
             echo $line;
         }
     } else if ($paso == 3) { //lee la ruta de la imagen
-        echo "<img class=\"centrada\" src=" . $line . "title=\"Imagen de la actividad\""
-        . "alt=\"Imagen de la actividad\" />";
+        echo "<img class='centrada' src=" . $line . "title='Imagen de la actividad'"
+        . "alt='Imagen de la actividad' />";
         $paso = 2;
     } else if ($paso == 4) { //lee la fecha
-        echo "<p class=\"negrita\"> Fecha: " . $line . "</p>";
+        echo "<p class='negrita'> Fecha: " . $line . "</p>";
         $paso = 2;
     } else if ($paso == 5) { //lee la descripción
         echo "<p>" . $line;
         $paso = 2;
     } else if ($paso == 6) { //lee
-        echo "<img src=" . $line . "title=\"Imagen de la actividad\" alt=\"Imagen de la actividad\" />";
+        echo "<img src=" . $line . "title='Imagen de la actividad' alt='Imagen de la actividad' />";
         $paso = 2;
     }
 }
