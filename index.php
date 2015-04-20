@@ -27,17 +27,24 @@
             </header>
             <div class="barraDerecha">
                 <?php
+                if($seccion == "detalle_ponencia"){
+                    $id = $_GET["id"];
+                }else{
+                    $id = 0;
+                }
                 include './php/contexmenu.php';
                 include './html/slider_patrocinadores.html';
                 ?>
             </div>
             <div class="mainContent">
                 <?php
-                if ($seccion != "detalle_visita") {
-                    $direccion = './html/' . $seccion . '.html';
-                } else {
+                if($seccion == "detalle_ponencia"){ // el ide lo guarda en la parte de la barraDerecha
+                    $direccion = './php/detalle_ponencia.php';
+                }else if ($seccion == "detalle_visita") {
                     $visita = $_GET["visita"];
                     $direccion = './php/detalle_visita.php';
+                } else {
+                    $direccion = './html/' . $seccion . '.html';
                 }
 
 //                echo "El Primer Parametro es :" . $seccion . "<br />";

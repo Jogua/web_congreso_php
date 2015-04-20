@@ -16,22 +16,21 @@ while (!feof($file)) {
             $paso = 0;
         }
     } else if ($paso == 2) { //Busqueda de tokens.
-//        echo 'prueba: ' . $line . ' '. strlen($line) . '<br/>';
         if (strncmp($line, "#imagen", 7) == 0) {
             $paso = 3;
         } else if (strncmp($line, "#fecha", 6) == 0) {
             $paso = 4;
-        } else if (strncmp($line, "#descripción", 12) == 0) {
+        } else if (strncmp($line, "#descripción", 12) == 0) { //comienza a leer la descripcion
             $comenzarDescripcion = true;
-        } else if (strlen($line) == 2) {
-            echo "</p>";
-            $comenzarDescripcion = true;
-            $leyendoDescripcion = false;
-        } else if($comenzarDescripcion){
+        } else if ($comenzarDescripcion) { //escribe la primera línea de un parrafo de la descripción.
             echo "<p>" . $line;
             $comenzarDescripcion = false;
             $leyendoDescripcion = true;
-        }else if($leyendoDescripcion){
+        } else if (strlen($line) == 2) { //si se lee una linea vacia se termina el parrafo leido anteriormente.
+            echo "</p>";
+            $comenzarDescripcion = true;
+            $leyendoDescripcion = false;
+        } else if ($leyendoDescripcion) { //se continua leyendo la descripción.
             echo $line;
         }
     } else if ($paso == 3) { //lee la ruta de la imagen
@@ -43,7 +42,7 @@ while (!feof($file)) {
         $paso = 2;
     }
 }
-if($leyendoDescripcion){
+if ($leyendoDescripcion) {
     echo "</p>";
 }
 

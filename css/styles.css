@@ -240,6 +240,60 @@ button.submit:active {
     box-shadow: 0 0 10px 5px #444 inset; 
 }
 
+/*
+ * Tabla de Ponencias
+ */
+
+#ponencias thead {
+    color: white;
+    background-color: green;
+}
+
+#ponencias a{
+    text-decoration: none;
+    color: black;
+}
+
+.hora {
+    width: 90px;
+    text-align: center;
+}
+
+.columnaPonencias {
+    width: 280px;
+    padding: 5px;
+}
+
+.tituloSeccion {
+    color: blue;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/*
+ * Detalle de las ponencias
+ */
+
+.otrasPonencias{
+    margin-left: 33px;
+    margin-right: 33px;
+    padding: 5px;
+    list-style: none;
+    font-size: 17px;
+}
+
+.otrasPonencias li{
+    margin-bottom: 3px;
+}
+
+.otrasPonencias li:hover{
+    background-color: #aaccff;
+}
+
+/*
+ * Extras
+ */
+
 #imagenActividad{
     margin: 25px 0 25px 0;    
 }
@@ -248,21 +302,8 @@ button.submit:active {
     font-weight: bold;
 }
 
-.columnaPonencias {
-    width: 280px;
-}
-
-.hora {
-    width: 85px;
-}
-
-#ponencias thead {
-    color: white;
-    background-color: green;
-}
-
-.tituloSeccion {
-    color: blue;
+.central{
+    text-align: center;
 }
 
 
