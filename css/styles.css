@@ -89,10 +89,17 @@ header h1 a {
     text-decoration: none;
     float: right;
 }
-.mainContent {
-    width: 100%;
+
+.mainContent{
+    width: 70%;
+    margin: 0 0px 0 0;
     padding: 20px 0 20px 0;
 }
+
+.mainContent h2{
+    padding: 20px 0;
+}
+
 .mainContent img {
     max-width: 100%;
     display: block;
@@ -147,14 +154,7 @@ aparezcan negros y sin subrayar */
     color: #000000;
     text-decoration: none;
 }
-.mainContent{
-    width: 70%;
-    margin: 0 0px 0 0;
-    padding: 20px 0 20px 0;
-}
-.mainContent h2{
-    padding: 20px 0;
-}
+
 /* estilos barra derecha */
 .barraDerecha{
     padding: 40px 0 20px 0;
