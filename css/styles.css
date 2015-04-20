@@ -241,13 +241,30 @@ button.submit:active {
 }
 
 #imagenActividad{
-    margin: 25px 0 25px 0;
-    
+    margin: 25px 0 25px 0;    
 }
 
 .negrita{
     font-weight: bold;
 }
+
+.columnaPonencias {
+    width: 280px;
+}
+
+.hora {
+    width: 85px;
+}
+
+#ponencias thead {
+    color: white;
+    background-color: green;
+}
+
+.tituloSeccion {
+    color: blue;
+}
+
 
 /*--------------------------------------------------------------------------------------------*/
 /********* begin MAIN NAV ********/
@@ -297,4 +314,3 @@ button.submit:active {
     display: block;
     z-index: 999;
 }
-
