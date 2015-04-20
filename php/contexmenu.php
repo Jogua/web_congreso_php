@@ -5,21 +5,21 @@ if ($id != 0) {
     <?php
     if ($id == 1) {
         ?>
-        <ul class="otrasPonencias">
+        <ul class="ponenciasRelacionadas">
             <a href="index.php?seccion=detalle_ponencia&&id=2"><li>IFML</li></a>
             <a href="index.php?seccion=detalle_ponencia&&id=3"><li>Prince2</li></a>
         </ul>
         <?php
     }else if ($id == 2) {
         ?>
-        <ul class="otrasPonencias">
+        <ul class="ponenciasRelacionadas">
             <a href="index.php?seccion=detalle_ponencia&&id=1"><li>Metodologías Ágiles</li></a>
             <a href="index.php?seccion=detalle_ponencia&&id=3"><li>Prince2</li></a>
         </ul>
         <?php
     } else if ($id == 3) {
         ?>
-        <ul class="otrasPonencias">
+        <ul class="ponenciasRelacionadas">
             <a href="index.php?seccion=detalle_ponencia&&id=1"><li>Metodologías Ágiles</li></a>
             <a href="index.php?seccion=detalle_ponencia&&id=2"><li>IFML</li></a>
         </ul>

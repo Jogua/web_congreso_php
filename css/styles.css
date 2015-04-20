@@ -274,7 +274,7 @@ button.submit:active {
  * Detalle de las ponencias
  */
 
-.otrasPonencias{
+.ponenciasRelacionadas{
     margin-left: 33px;
     margin-right: 33px;
     padding: 5px;
@@ -282,11 +282,11 @@ button.submit:active {
     font-size: 17px;
 }
 
-.otrasPonencias li{
+.ponenciasRelacionadas li{
     margin-bottom: 3px;
 }
 
-.otrasPonencias li:hover{
+.ponenciasRelacionadas li:hover{
     background-color: #aaccff;
 }
 
