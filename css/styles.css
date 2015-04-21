@@ -279,6 +279,7 @@ button.submit:active {
 .ponenciasRelacionadas{
     margin-left: 33px;
     margin-right: 33px;
+    margin-bottom: 30px;
     padding: 5px;
     list-style: none;
     font-size: 17px;
