@@ -23,8 +23,8 @@
                     include './php/header.php';
                     ?>
                 </div>
-                <br class="clearfloat" />
             </header>
+            <br class="clearfloat" />
             <div class="barraDerecha">
                 <?php
                 if($seccion == "detalle_ponencia"){
@@ -46,9 +46,6 @@
                 } else {
                     $direccion = './html/' . $seccion . '.html';
                 }
-
-//                echo "El Primer Parametro es :" . $seccion . "<br />";
-//                $direccion = $HTTP_GET_VARS["seccion"];
                 include $direccion;
                 ?>
             </div>
