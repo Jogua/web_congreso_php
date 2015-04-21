@@ -286,6 +286,7 @@ button.submit:active {
 
 .ponenciasRelacionadas li{
     margin-bottom: 3px;
+    text-align: left;
 }
 
 .ponenciasRelacionadas li:hover{

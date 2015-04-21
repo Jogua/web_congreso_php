@@ -54,5 +54,8 @@ if (!$mail->Send()) {
     exit;
 }
 
-header('Location: ../index.php?seccion=contacto')
+echo "<script>
+        alert('El email se ha enviado correctamente');
+        location.href='../index.php?seccion=contacto';
+    </script>';";
 ?>
