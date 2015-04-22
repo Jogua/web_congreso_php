@@ -1,3 +1,6 @@
+<script src="js/validar_usuario.js"></script>
+<script src="js/actualizar_precio.js"></script>
+
 <h2>Inscripción</h2>
 <p>
     ¿Quieres asistir a la primera edición del CEIIE?
@@ -6,6 +9,62 @@
     La cuota de inscripción dependerá del sector al que se dedique y del momento en el que se realice.
     Además, también se tendrá en cuenta si sois estudiantes o profesores.
 </p>
-<p>
-    El plazo de incripción se abrirá en breve. 
-</p>  
+<form class="formularioInscripcion" action="php/inscribirse.php" method="post">
+    <ul>
+	<li>
+	    <label for="nombre"> Nombre: </label>
+	    <input type="text" name="nombre" required />
+	</li>
+	<li>
+	    <label for="apellidos">Apellidos:</label>
+	    <input type="text" name="apellidos" required />
+	</li>
+	<li>
+	    <label for="email">E-mail:</label>
+	    <input type="text" name="email" required />
+	</li>
+	<li>
+	    <label for="nombreUsuario">Nombre de Usuario:</label>
+	    <input type="text" name="nombreUsuario" required />
+	</li>
+	<li>
+	    <label for="contrasena"> Contraseña:</label>
+	    <input type="password" name="contrasena" required/>
+	</li>
+	<li>
+	    <label for="contrasena2"> Confirma la contraseña:</label>
+	    <input type="password" name="contrasena2" required/>
+	</li>
+	<li>
+	    <label for="tipoUsuario"> Tipo de Inscripción:</label>
+	    <select id="tipoUsuario" name="tipoUsuario" onchange="validar_usuario(this)">
+		<option value="invitado"> Invitado </option>
+		<option value="estudiante"> Estudiante </option>
+		<option value="profesor"> Profesor </option>
+	    </select>	    
+	</li>
+	<li id="universidad">
+
+	</li>
+	<li>
+	    <label for="actividades">Actividades:</label>
+
+	    <ul id="actividades">
+		<li>
+		    <input id="alhambra" type="checkbox" name="actividades" value="alhambra" onchange="actualizar_precio()"/>
+		    <label for="alhambra">Viaje a la Alhambra - 15€</label>
+		</li>
+		<li>
+		    <input id="sierra" type="checkbox" name="actividades" value="sierra" onchange="actualizar_precio()"/>
+		    <label for="sierra">Viaje a Sierra Nevada - 20€</label>
+		</li>
+	    </ul>
+	</li>
+	<li id="precio">
+	    Precio Total: 30€ 
+	</li>
+	<li>
+	    <button class="submit" type="submit">Inscribirse</button>
+	</li>
+    </ul>
+</form>

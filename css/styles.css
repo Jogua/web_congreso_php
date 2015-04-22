@@ -220,6 +220,86 @@ aparezcan negros y sin subrayar */
 .formulario button {
     margin-left:125px;
 }
+
+/*
+ * Estilos Formulario de Inscripción
+ */
+
+.formularioInscripcion{
+    margin-bottom: 50px;
+}
+
+.formularioInscripcion ul {
+    list-style-type:none;
+}
+
+.formularioInscripcion li{
+    padding:12px 12px 12px 0px; 
+    position:relative;
+}
+
+.formularioInscripcion label{
+    color: #555555;
+    display: inline-block;
+    float: left;
+    text-align: right;
+    font-weight: bold;
+    margin-top: 3px;
+    padding: 3px 3px 3px 0px;
+    width: 180px;
+}
+
+.formularioInscripcion input {
+    height:20px; 
+    width:325px; 
+    padding:5px 8px;
+}
+.formularioInscripcion textarea {
+    padding:8px; 
+    width:325px;
+}
+
+.formularioInscripcion select{
+    height:30px; 
+    width:150px; 
+    padding:5px 8px;
+}
+
+.formularioInscripcion #universidad{
+    padding: 0px;
+}
+
+.formularioInscripcion #actividades{
+    clear: both;
+    margin-left: 150px;
+}
+
+.formularioInscripcion #actividades input{
+    float: left;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.formularioInscripcion #actividades label{
+    font-weight: bold;
+    margin-top: 0px;
+    padding: 0px 3px 3px 0px;
+    width: auto;
+}
+
+.formularioInscripcion button {
+    margin-left: 170px;
+}
+
+.formularioInscripcion #precio{
+    color: #555555;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 150px;
+    padding: 3px 3px 3px 0px;
+}
+
 /* estilos botones formulario */
 button.submit {
     padding: 9px 17px;
