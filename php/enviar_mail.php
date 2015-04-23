@@ -3,59 +3,55 @@
 require_once ("../php/phpmailer/class.phpmailer.php");
 require_once ("../php/phpmailer/class.smtp.php");
 
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$remitente = $_POST['email'];
-$mensaje = $nombre . ' ' . $apellidos . ' (' . $remitente .  ') ha escrito el siguiente mensaje: <br/><br/>' . $_POST['mensaje'];
+function enviarMail($receptor, $asunto, $mensaje) {
+    
+    $mail = new PHPMailer();
+    $mail->IsSMTP();
+    $mail->CharSet = 'UTF-8';
+    $mail->SMTPAuth = 'true';
+    $mail->SMTPSecure = 'ssl';
+    $mail->SMTPKeepAlive = true;
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 465;
+    $mail->IsHTML(true);
 
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->SMTPAuth = 'true';
-$mail->SMTPSecure = 'tls';
-$mail->SMTPKeepAlive = true;
-$mail->Host = 'smtp.gmail.com';
-$mail->Port = 587;
-$mail->IsHTML(true);
+    $mail->Username = "congresoCEIIE@gmail.com";
+    $mail->Password = "sibw2015";
+    $mail->SingleTo = true;
 
-$mail->Username = "congresoCEIIE@gmail.com";
-$mail->Password = "sibw2015";
-$mail->SingleTo = true;
+    $from = 'congresoCEIIE@gmail.com';
+    $fromname = 'Congreso CEIIE';
+    $subject = $asunto;
+    $message = $mensaje;
+    $headers = "From: $from\n";
+    $headers .= "MIME-Version: 1.0\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\n";
 
-$to = 'congresoCEIIE@gmail.com';
-$from = $remitente;
-$fromname = $nombre . ' ' . $apellidos;
-$subject = '[Mensaje de Web] Mensaje de usuario';
-$message = $mensaje;
-$headers = "From: $from\n";
-$headers .= "MIME-Version: 1.0\n";
-$headers .= "Content-type: text/html; charset=UTF-8\n";
+    $mail->From = $from;
+    $mail->FromName = $fromname;
 
-$mail->From = "congresoCEIIE@gmail.com";
-$mail->FromName = "CONGRESO CEIIE";
-        
-$mail->AddAddress($remitente);
-$mail->AddAddress($mail->From);
+    $mail->AddAddress($receptor);
 
-$mail->Subject = $subject;
-$mail->Body = $message;
+    $mail->Subject = $subject;
+    $mail->Body = $message;
 
-$options = array(
-    'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
-    )
-);
-$mail->smtpConnect($options);
+    $options = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
+    $mail->smtpConnect($options);
 
-if (!$mail->Send()) {
-    echo "Message could not be sent. <p>";
-    echo "Mailer Error: " . $mail->ErrorInfo;
-    exit;
+    if (!$mail->Send()) {
+//        echo "Message could not be sent. <p>";
+//        echo "Mailer Error: " . $mail->ErrorInfo;
+//        exit
+        return false;
+    }else{
+        return true;
+    }
 }
 
-echo "<script>
-        alert('El email se ha enviado correctamente');
-        location.href='../index.php?seccion=contacto';
-    </script>';";
 ?>

@@ -1,5 +1,6 @@
 <script src="js/validar_usuario.js"></script>
 <script src="js/actualizar_precio.js"></script>
+<script src="js/check_password.js"></script>
 
 <h2>Inscripción</h2>
 <p>
@@ -9,7 +10,7 @@
 <p>
     ¿Quieres asistir a la primera edición del CEIIE? Rellena el siguiente formulario.
 </p>
-<form class="formularioInscripcion" action="php/inscribirse.php" method="post">
+<form class="formularioInscripcion" action="php/enviar_inscripcion.php" method="post">
     <ul>
 	<li>
 	    <label for="nombre"> Nombre: </label>
@@ -51,11 +52,11 @@
 
 	    <ul id="actividades">
 		<li>
-		    <input id="alhambra" type="checkbox" name="actividades" value="alhambra" onchange="actualizar_precio()"/>
+		    <input id="alhambra" type="checkbox" name="actividades[]" value="alhambra" onchange="actualizar_precio()"/>
 		    <label for="alhambra">Viaje a la Alhambra - 15€</label>
 		</li>
 		<li>
-		    <input id="sierra" type="checkbox" name="actividades" value="sierra" onchange="actualizar_precio()"/>
+		    <input id="sierra" type="checkbox" name="actividades[]" value="sierra" onchange="actualizar_precio()"/>
 		    <label for="sierra">Viaje a Sierra Nevada - 20€</label>
 		</li>
 	    </ul>
@@ -65,6 +66,7 @@
 	</li>
 	<li>
 	    <button class="submit" type="submit">Inscribirse</button>
+	    <!--<button class="submit" type="submit" onclick="check_password()">Inscribirse</button>-->
 	</li>
     </ul>
 </form>
