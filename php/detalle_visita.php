@@ -20,6 +20,8 @@ while (!feof($file)) {
             $paso = 3;
         } else if (strncmp($line, "#fecha", 6) == 0) {
             $paso = 4;
+        } else if (strncmp($line, "#precio", 7) == 0) {
+            $paso = 5;
         } else if (strncmp($line, "#descripción", 12) == 0) { //comienza a leer la descripcion
             $comenzarDescripcion = true;
         } else if ($comenzarDescripcion) { //escribe la primera línea de un parrafo de la descripción.
@@ -39,6 +41,9 @@ while (!feof($file)) {
         $paso = 2;
     } else if ($paso == 4) { //lee la fecha
         echo "<p class='negrita'> Fecha: " . $line . "</p>";
+        $paso = 2;
+    } else if ($paso == 5) { //lee la fecha
+        echo "<p class='negrita'> Precio: " . $line . "</p>";
         $paso = 2;
     }
 }

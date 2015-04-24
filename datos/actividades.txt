@@ -4,6 +4,8 @@ Visita a la Alhambra
 images/visita_alhambra.jpg
 #fecha
 2 de Julio
+#precio
+15€
 #descripción de la actividad
 
 La Alhambra es una ciudad palatina andalusí situada en Granada, España. Formada por un conjunto de palacios,
@@ -22,6 +24,8 @@ Visita a Sierra Nevada
 images/visita_sierra_nevada.jpg
 #fecha
 1 de Julio
+#precio
+20€
 #descripción de la actividad
 
 La Estación de Esquí y Montaña de Sierra Nevada está situada en el Parque Natural de Sierra Nevada, en el Sistema
