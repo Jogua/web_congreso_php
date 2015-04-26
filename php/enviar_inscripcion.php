@@ -8,7 +8,11 @@ $email = $_POST['email'];
 $usuario = $_POST['nombreUsuario'];
 $contrasena = $_POST['contrasena'];
 $tipoUsuario = $_POST['tipoUsuario'];
-$actividades = $_POST['actividades'];
+
+if (isset($_POST['actividades'])) {
+    $actividades = $_POST['actividades'];
+}
+
 $actividadesInscritas = "";
 
 switch ($tipoUsuario) {
@@ -27,7 +31,7 @@ switch ($tipoUsuario) {
 }
 
 if (!empty($actividades)) {
-    $actividadesInscritas = 'Además, se ha inscrito en las siguientes actividades: <br/><br/>';
+    $actividadesInscritas = 'Además, se ha reservado plaza en las siguientes actividades: <br/><br/>';
 
     if (in_array('alhambra', $actividades)) {
         $actividadesInscritas = $actividadesInscritas . "     - Visita a la Alhambra.<br/>";
@@ -40,7 +44,7 @@ if (!empty($actividades)) {
 }
 
 $asunto = '[Mensaje de Web] Inscripción al congreso';
-$mensaje = $nombre . ' ' . $apellidos . ' se ha inscrito al congreso en la categoria de '
+$mensaje = 'Se ha inscrito al congreso en la categoria de '
         . $tipoUsuario . $universidad . '.<br/><br/>' . $actividadesInscritas
         . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
         . 'La forma de pago consiste en realizar una trasnferencia indicando su nombre de usuario al siguiente 

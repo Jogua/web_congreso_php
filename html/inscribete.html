@@ -1,7 +1,5 @@
-<script src="js/validar_usuario.js"></script>
-<script src="js/actualizar_precio.js"></script>
-<script src="js/check_password.js"></script>
-
+<!--para importar el archivo javaScript-->
+<script src="js/formulario_inscripcion.js"></script>  
 <h2>Inscripción</h2>
 <p>
     El pago de la inscripción se realizará mediante transferencia bancaria. Cuando se inscriba recibirá un email
@@ -10,7 +8,7 @@
 <p>
     ¿Quieres asistir a la primera edición del CEIIE? Rellena el siguiente formulario.
 </p>
-<form class="formularioInscripcion" action="php/enviar_inscripcion.php" method="post">
+<form class="formularioInscripcion" action="php/enviar_inscripcion.php" onsubmit="return check_password(this)" method="post">
     <ul>
 	<li>
 	    <label for="nombre"> Nombre: </label>
@@ -66,7 +64,7 @@
 	</li>
 	<li>
 	    <button class="submit" type="submit">Inscribirse</button>
-	    <!--<button class="submit" type="submit" onclick="check_password()">Inscribirse</button>-->
+
 	</li>
     </ul>
 </form>
