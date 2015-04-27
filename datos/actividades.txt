@@ -3,10 +3,13 @@ Visita a la Alhambra
 #imagen
 images/visita_alhambra.jpg
 #fecha
-2 de Julio
+2 de Julio (9:00 - 14:00)
 #precio
-15€
+25€
 #descripción de la actividad
+
+La actividad consistirá en visita a los alrededores del monumento y entrada en horario de mañana, donde se 
+podrán ver la Alhambra y el Generalife.
 
 La Alhambra es una ciudad palatina andalusí situada en Granada, España. Formada por un conjunto de palacios,
 jardines y fortaleza (alcázar o al-qasr القصر) que albergaba una verdadera ciudadela dentro de la propia ciudad
@@ -23,10 +26,12 @@ Visita a Sierra Nevada
 #imagen
 images/visita_sierra_nevada.jpg
 #fecha
-1 de Julio
+1 de Julio (9:00 - 14:00)
 #precio
-20€
+15€
 #descripción de la actividad
+
+La actividad consistirá en visita a la estación de esquí en la explanada de Pradollano, subida a Borreguiles y desayuno incluido.
 
 La Estación de Esquí y Montaña de Sierra Nevada está situada en el Parque Natural de Sierra Nevada, en el Sistema
 Penibético, en los términos municipales de Monachil y de Dílar (partido judicial y provincia de Granada, España).

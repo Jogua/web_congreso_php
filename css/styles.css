@@ -153,7 +153,7 @@ footer p {
     display: block;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 3px 4px 0px #939393;
-    margin-top: 25px;
+    margin-top: 5px;
     margin-bottom: 25px;
 }
 /* para que los enlaces locales ya visitados dentro de una misma página 
@@ -375,9 +375,6 @@ button.submit:active {
     text-align: left;
 }
 
-.ponenciasRelacionadas li:hover{
-    background-color: #aaccff;
-}
 
 /*
  * Extras
