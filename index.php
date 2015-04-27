@@ -7,6 +7,7 @@
         <title>I Edición CEIIE | Granada, 1-3 Julio</title>
         <!-- script para slider de patrocinadores -->
         <script src="js/slider.js"></script>
+        <script src="js/formularios.js"></script>  
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
