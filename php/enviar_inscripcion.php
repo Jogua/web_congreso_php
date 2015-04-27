@@ -47,7 +47,7 @@ $asunto = '[Mensaje de Web] Inscripción al congreso';
 $mensaje = 'Se ha inscrito al congreso en la categoria de '
         . $tipoUsuario . $universidad . '.<br/><br/>' . $actividadesInscritas
         . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
-        . 'La forma de pago consiste en realizar una trasnferencia indicando su nombre de usuario al siguiente 
+        . 'La forma de pago consiste en realizar una trasferencia indicando su nombre de usuario al siguiente 
         número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a "congresosCEIIE@gmail.com"
         un justificante de dicho pago con el asunto "Confirmación pago ' . $usuario . '".<br/><br/>'
         . '¡Nos vemos pronto!';
