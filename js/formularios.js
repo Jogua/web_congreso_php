@@ -1,3 +1,13 @@
+function comprueba_formulario(f) {
+    if (comprueba_mail(f)) {
+        if (check_password(f)) {
+            return true;
+        }
+        
+    }
+    return false;
+}
+
 function check_password(f) {
 
     var password1 = f.contrasena.value;
@@ -48,4 +58,15 @@ function actualizar_precio() {
     }
 
     document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
+}
+
+/*función que comprueba el formulario de envío de mensaje*/
+function comprueba_mail(f) {
+    var re = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!re.test(f.email.value)) {
+        alert("ERROR: Email incorrecto. Intentelo de nuevo.");
+        return false;
+    }
+    alert("Gracias por contactar con nosotros.\nEn breve recibirás respuesta.");
+    return true;
 }
