@@ -17,7 +17,7 @@ if ($id != 0) {
             ?>
         </ul>
         <?php
-    }else if ($id >= 4 && $id <= 6) {
+    } else if ($id >= 4 && $id <= 6) {
         ?>
         <h2> Ponencias Relacionadas con Informática Gráfica</h2>
         <ul class="ponenciasRelacionadas">
@@ -34,7 +34,7 @@ if ($id != 0) {
             ?>
         </ul>
         <?php
-    }else if ($id >= 7 && $id <= 9) {
+    } else if ($id >= 7 && $id <= 9) {
         ?>
         <h2> Ponencias Relacionadas con Base de Datos</h2>
         <ul class="ponenciasRelacionadas">
@@ -51,7 +51,7 @@ if ($id != 0) {
             ?>
         </ul>
         <?php
-    }else if ($id >= 10 && $id <= 12) {
+    } else if ($id >= 10 && $id <= 12) {
         ?>
         <h2> Ponencias Relacionadas con Compiladores</h2>
         <ul class="ponenciasRelacionadas">
@@ -68,7 +68,7 @@ if ($id != 0) {
             ?>
         </ul>
         <?php
-    }else if ($id >= 13 && $id <= 15) {
+    } else if ($id >= 13 && $id <= 15) {
         ?>
         <h2> Ponencias Relacionadas con Sistemas Operativos</h2>
         <ul class="ponenciasRelacionadas">
@@ -85,7 +85,7 @@ if ($id != 0) {
             ?>
         </ul>
         <?php
-    }else if ($id >= 16 && $id <= 18) {
+    } else if ($id >= 16 && $id <= 18) {
         ?>
         <h2> Ponencias Relacionadas con Sistemas Complejos</h2>
         <ul class="ponenciasRelacionadas">
@@ -102,7 +102,7 @@ if ($id != 0) {
             ?>
         </ul>
         <?php
-    }else if ($id >= 19 && $id <= 21) {
+    } else if ($id >= 19 && $id <= 21) {
         ?>
         <h2> Ponencias Relacionadas con Interfaces de Usuario</h2>
         <ul class="ponenciasRelacionadas">

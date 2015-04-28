@@ -61,14 +61,14 @@ destacar($seccion == "como_llegar" || $seccion == "localizacion");
 <?php
 destacar($seccion == "patrocinio" || $seccion == "acerca_de" || $seccion == "contacto")
 ?>
-    <a>Más información</a>
-    <ul>
-        <li>
-            <a href="index.php?seccion=patrocinio">Patrocinio</a>
-        </li>
-        <li><a href="index.php?seccion=acerca_de">Acerca de</a>
-        </li>
-        <li><a href="index.php?seccion=contacto">Contacto</a>
-        </li>
-    </ul>
+<a>Más información</a>
+<ul>
+    <li>
+        <a href="index.php?seccion=patrocinio">Patrocinio</a>
+    </li>
+    <li><a href="index.php?seccion=acerca_de">Acerca de</a>
+    </li>
+    <li><a href="index.php?seccion=contacto">Contacto</a>
+    </li>
+</ul>
 </li>

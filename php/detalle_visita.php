@@ -42,7 +42,7 @@ while (!feof($file)) {
     } else if ($paso == 4) { //lee la fecha
         echo "<p class='negrita'> Fecha: " . $line . "</p>";
         $paso = 2;
-    } else if ($paso == 5) { //lee la fecha
+    } else if ($paso == 5) { //lee el precio
         echo "<p class='negrita'> Precio: " . $line . "</p>";
         $paso = 2;
     }

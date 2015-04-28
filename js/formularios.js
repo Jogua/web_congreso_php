@@ -67,6 +67,5 @@ function comprueba_mail(f) {
         alert("ERROR: Email incorrecto. Intentelo de nuevo.");
         return false;
     }
-    alert("Gracias por contactar con nosotros.\nEn breve recibirás respuesta.");
     return true;
 }

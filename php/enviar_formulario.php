@@ -16,15 +16,14 @@ if (enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje)) {
 
     enviarMail($email, $asunto, $mensaje); //si este falla no nos importa, ya que es una respuesta automatica al usuario
     echo "<script>
-            alert('El email se ha enviado correctamente');
+            alert('Su consulta se ha enviado correctamente');
             location.href='../index.php?seccion=contacto';
         </script>";
-}else{
+} else {
     echo "<script>
-            alert('El email no se ha podido enviar. <br/> Intentelo más tarde.');
+            alert('Lo sentimos, la consulta no se ha podido enviar. <br/> Intentelo de nuevo más tarde.');
             location.href='../index.php?seccion=contacto';
         </script>";
 }
-
 ?>
 
