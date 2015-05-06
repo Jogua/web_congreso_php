@@ -2,7 +2,7 @@
 include 'conexion_BD.php';
 session_start();
 //comprobación de que el usuario exista
-$consulta = 'SELECT * FROM usuario WHERE mail="' . $_POST['mail'] . '" AND password="' . $_POST['password'] . '"';
+$consulta = 'SELECT * FROM usuario WHERE mail="' . $_POST['email'] . '" AND password="' . $_POST['password'] . '"';
 
 //Envio la consulta a MySQL.
 $resultado = conexionBD($consulta);

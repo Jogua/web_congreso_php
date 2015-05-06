@@ -67,7 +67,7 @@ function actualizar_precio() {
 function comprueba_mail(f) {
     var re = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
     if (!re.test(f.email.value)) {
-        alert("ERROR: Email incorrecto. Intentelo de nuevo.");
+        alert("ERROR: Email incorrecto. Inténtelo de nuevo.");
         return false;
     }
     return true;

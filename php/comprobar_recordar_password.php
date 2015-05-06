@@ -3,7 +3,7 @@ include 'conexion_BD.php';
 require_once 'enviar_mail.php';
 session_start();
 //comprobación de que el usuario exista
-$consulta = 'SELECT * FROM usuario WHERE mail="' . $_POST['mail'] . '"';
+$consulta = 'SELECT * FROM usuario WHERE mail="' . $_POST['email'] . '"';
 
 //Envio la consulta a MySQL.
 $resultado = conexionBD($consulta);
