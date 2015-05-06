@@ -57,14 +57,14 @@ if (enviarMail($email, $asunto, $mensaje)) {
     $mensaje = $nombre . ' ' . $apellidos . ' se ha inscrito al congreso en la categoria de '
             . $tipoUsuario . $universidad . '.<br/><br/>' . $actividadesInscritas
             . '<br/> El precio total es de: ' . $precio . '€<br/><br/>';
-    enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje); //si este falla no nos importa, ya que es una confirmación a nuestro correo
+    enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje);
     echo "<script>
-            alert('El email se ha enviado correctamente');
+            alert('Se ha inscrito correctamente.');
             location.href='../index.php?seccion=inscribete';
         </script>";
 } else {
     echo "<script>
-            alert('El email no se ha podido enviar. \n Intentelo más tarde.');
+            alert('Lo sentimos, ha ocurrido un error durante la inscripción. \n Intentelo más tarde.');
             location.href='../index.php?seccion=inscribete';
         </script>";
 }

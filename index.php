@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 
+<?php
+if (empty($_GET['seccion'])) {
+    $seccion = "presentacion";
+} else {
+    $seccion = $_GET['seccion'];
+}
+if (isset($_GET['visita'])) {
+    $visita = $_GET['visita'];
+}
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -19,11 +33,6 @@
                 <img src="images/cabecera.png" alt="Logo Congreso" />
                 <div id="menuSuperior">
                     <?php
-                    if (empty($_GET['seccion'])) {
-                        $seccion = "presentacion";
-                    } else {
-                        $seccion = $_GET['seccion'];
-                    }
                     include './php/header.php';
                     ?>
                 </div>
