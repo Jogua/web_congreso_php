@@ -1,0 +1,20 @@
+<div id="iniciar_sesion_error" class="modalmask">
+    <div class="modalbox movedown">
+        <a href="" title="Cerrar" class="close">X</a>
+        <h2>Iniciar Sesión</h2>
+        <form action="php/comprobar_usuario.php" method="POST">
+            <label for="mail">E-Mail:</label>
+            <br>
+            <input type="text" id="mail" name="mail" required />
+            <br><br>
+            <label for="passwordUsuario">Contraseña:</label>
+            <br>
+            <input type="password" id="password" name="password" required />
+            <br>
+            <a id="recordarContraseña" onclick="alert('Función para recordar contraseña')">¿Has olvidado tu contraseña?</a>
+            <br><br>
+            <button type="submit" title="Iniciar Sesión" name="iniciarSesion"> Iniciar Sesión </button>
+        </form>
+        <strong>Nombre de usuario/contraseña incorrectos</strong>
+    </div>
+</div>

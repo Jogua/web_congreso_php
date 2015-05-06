@@ -9,6 +9,9 @@
         <script src="js/slider.js"></script>
         <script src="js/formularios.js"></script>  
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <?php
+        include './php/conexion_BD.php';
+        ?>
     </head>
     <body>
         <div class="container">
@@ -28,26 +31,17 @@
             <br class="clearfloat" />
             <div class="barraDerecha">
                 <?php
-                if($seccion == "detalle_ponencia"){
+                if ($seccion == "detalle_ponencia") {
                     $id = $_GET["id"];
-                }else{
+                } else {
                     $id = 0;
                 }
-                include './php/contexmenu.php';
-                include './html/slider_patrocinadores.html';
+                include './php/contexmenu.php';                
                 ?>
             </div>
             <div class="mainContent">
                 <?php
-                if($seccion == "detalle_ponencia"){ // el ide lo guarda en la parte de la barraDerecha
-                    $direccion = './php/detalle_ponencia.php';
-                }else if ($seccion == "detalle_visita") {
-                    $visita = $_GET["visita"];
-                    $direccion = './php/detalle_visita.php';
-                } else {
-                    $direccion = './html/' . $seccion . '.html';
-                }
-                include $direccion;
+                include './php/content.php';
                 ?>
             </div>
             <br class="clearfloat" />

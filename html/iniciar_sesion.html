@@ -1,0 +1,19 @@
+<div id="iniciar_sesion" class="modalmask">
+    <div class="modalbox movedown">
+        <a href="" title="Cerrar" class="close">X</a>
+        <h2>Iniciar Sesión</h2>
+        <form action="php/comprobar_usuario.php" method="POST">
+            <label for="mail">E-Mail:</label>
+            <br>
+            <input type="text" id="mail" name="mail" required />
+            <br><br>
+            <label for="passwordUsuario">Contraseña:</label>
+            <br>
+            <input type="password" id="password" name="password" required />
+            <br>
+            <a id="recordarContraseña" href="#recordar_password">¿Has olvidado tu contraseña?</a>
+            <br><br>
+            <button type="submit" title="Iniciar Sesión" name="iniciarSesion"> Iniciar Sesión </button>
+        </form>
+    </div>
+</div>

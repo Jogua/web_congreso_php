@@ -17,13 +17,13 @@
 	    <label for="apellidos">Apellidos:</label>
 	    <input type="text" name="apellidos" required />
 	</li>
+        <li>
+	    <label for="telefono">Teléfono de contacto:</label>
+	    <input type="text" name="telefono" required />
+	</li>
 	<li>
 	    <label for="email">E-mail:</label>
 	    <input type="text" name="email" required />
-	</li>
-	<li>
-	    <label for="nombreUsuario">Nombre de Usuario:</label>
-	    <input type="text" name="nombreUsuario" required />
 	</li>
 	<li>
 	    <label for="contrasena"> Contraseña:</label>
@@ -48,14 +48,28 @@
 	    <label for="actividades">Actividades:</label>
 
 	    <ul id="actividades">
-		<li>
+<!--		<li>
 		    <input id="alhambra" type="checkbox" name="actividades[]" value="alhambra" onchange="actualizar_precio()"/>
 		    <label for="alhambra">Viaje a la Alhambra - 15€</label>
 		</li>
 		<li>
 		    <input id="sierra" type="checkbox" name="actividades[]" value="sierra" onchange="actualizar_precio()"/>
 		    <label for="sierra">Viaje a Sierra Nevada - 20€</label>
-		</li>
+		</li>-->
+                
+                <!--
+-->            <?php
+                $resultado = conexionBD('select denominacion,importe from actividad');
+                $precio_actividades = 0;
+                while ( $fila = mysql_fetch_array ($resultado) ) {
+                    //procesamos cada fila del resultado
+                    echo "<li>";
+                    echo "<input id='$fila[0]' type='checkbox' name='actividades[]' value='$fila[0]' onchange='actualizar_precio()' />";
+                    echo "<label for='$fila[0]'> $fila[0] - $fila[1]€</label>";
+                    echo "</li>";                    
+                }
+            ?>
+                
 	    </ul>
 	</li>
 	<li id="precio">
@@ -67,3 +81,15 @@
 	</li>
     </ul>
 </form>
+<!--
+            <?php
+                $resultado = conexionBD('select denominacion,importe from actividad');
+                $precio_actividades = 0;
+                while ( $fila = mysql_fetch_array ($resultado) ) {
+                    //procesamos cada fila del resultado
+                    echo "<li>";
+                    echo "<input id='$fila[0]' type='checkbox'  value='$fila[0]' onchange='actualizar_precio()' />";
+                    echo "<label for='$fila[0]'> $fila[0] - $fila[1]€</label>";
+                    echo "</li>";                    
+                }
+            ?>-->

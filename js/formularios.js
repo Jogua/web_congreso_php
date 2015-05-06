@@ -2,14 +2,12 @@ function comprueba_formulario(f) {
     if (comprueba_mail(f)) {
         if (check_password(f)) {
             return true;
-        }
-        
+        }        
     }
     return false;
 }
 
 function check_password(f) {
-
     var password1 = f.contrasena.value;
     var password2 = f.contrasena2.value;
     if (password1 != password2) {
@@ -46,18 +44,23 @@ function actualizar_precio() {
     } else {
         precio = 30;
     }
+//    alert("La contraseña tiene que contener al menos 8 caracteres.");
+    var actividades = document.getElementById("actividades");
 
-    var alhambra = document.getElementById("alhambra");
-    if (alhambra.checked) {
-        precio += 15;
-    }
+    
+    
+//    var alhambra = document.getElementById("alhambra");
+//    if (alhambra.checked) {
+//        precio += 15;
+//    }
+//
+//    var sierra = document.getElementById("sierra");
+//    if (sierra.checked) {
+//        precio += 20;
+//    }
 
-    var sierra = document.getElementById("sierra");
-    if (sierra.checked) {
-        precio += 20;
-    }
-
-    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
+//    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
+    document.getElementById("precio").innerHTML = actividades.toString();//actividades;
 }
 
 /*función que comprueba el formulario de envío de mensaje*/
