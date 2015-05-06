@@ -1,5 +1,5 @@
 <?php
-include 'conexion_BD.php';
+include './conexion_BD.php';
 session_start();
 //comprobación de que el usuario exista
 $consulta = 'SELECT * FROM usuario WHERE mail="' . $_POST['email'] . '" AND password="' . $_POST['password'] . '"';

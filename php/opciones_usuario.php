@@ -4,6 +4,9 @@
    
     if (isset($_SESSION['nombre'])) {
         echo '<strong>' . $_SESSION['nombre'] . '</strong> (' . $_SESSION['tipo_usuario'] . ')<br /><br />';
+                if ($_SESSION['tipo_usuario'] == "administrador") {
+            echo '<a href="index.php?seccion=administrador">Ver congresistas</a><br /><br />';
+        }
         echo '<a href="#cambiar_password">Cambiar contraseña</a><br /><br />';
         echo '<a href="php/cerrar_sesion.php">Cerrar Sesión</a>';
     } else {

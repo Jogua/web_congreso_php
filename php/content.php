@@ -4,7 +4,9 @@
     } else if ($seccion == "detalle_visita") {
         $visita = $_GET["visita"];
         $direccion = './php/detalle_visita.php';
-    } else {
+    } else if ($seccion == "administrador") {    
+        $direccion = './php/opciones_administrador.php';
+    }else {
         $direccion = './html/' . $seccion . '.html';
     }
     include $direccion;
