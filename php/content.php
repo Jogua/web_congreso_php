@@ -6,7 +6,7 @@
         $direccion = './php/detalle_visita.php';
     } else if ($seccion == "administrador") {    
         $direccion = './php/opciones_administrador.php';
-    }else {
+    } else {
         $direccion = './html/' . $seccion . '.html';
     }
     include $direccion;
