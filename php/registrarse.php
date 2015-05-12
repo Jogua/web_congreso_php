@@ -16,7 +16,8 @@ if (!$resultado) {
             location.href= " ' . $_SERVER['HTTP_REFERER'] . '";
         </script>';
 } else {
-    $_SESSION['nombre_usuario'] = $_POST['nombre'];
+    $_SESSION['nombre'] = $_POST['nombre'];
+    $_SESSION['mail'] = $_POST['mail'];
     $_SESSION['tipo_usuario'] = $_POST['tipo_usuario'];
     echo '<script>
             alert("El usuario se ha creado correctamente.");

@@ -3,8 +3,9 @@
 session_start();
 echo '<h2> Opciones de usuario</h2>';
 
-if (isset($_SESSION['nombre'])) {
-    echo '<strong>' . $_SESSION['nombre'] . '</strong> (' . $_SESSION['tipo_usuario'] . ')<br /><br />';
+if (isset($_SESSION['mail'])) {
+    echo '<strong>' . $_SESSION['mail'] . '</strong> <br/>'
+            . '(' . $_SESSION['tipo_usuario'] . ')<br /><br />';
     if ($_SESSION['tipo_usuario'] == "administrador") {
         echo '<a href="index.php?seccion=administrador">Ver congresistas</a><br /><br />';
     }
