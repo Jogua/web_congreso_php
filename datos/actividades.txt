@@ -26,7 +26,7 @@ Visita a Sierra Nevada
 #imagen
 images/visita_sierra_nevada.jpg
 #fecha
-1 de Julio (9:00 - 14:00)
+3 de Julio (9:00 - 14:00)
 #precio
 15€
 #descripción de la actividad

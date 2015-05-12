@@ -4,7 +4,7 @@ if ($_SESSION['tipo_usuario'] == "administrador") {
 
     if (isset($_GET['congresista'])) {
         //busco los datos del congresista
-        $consulta = 'SELECT * FROM usuario WHERE mail="' . $_GET['congresista'] . '"';// AND tipo_usuario!="administrador"';
+        $consulta = 'SELECT * FROM usuario WHERE mail="' . $_GET['congresista'];// AND tipo_usuario!="administrador"';
 
         //envio la consulta a MySQL
         $resultado = conexionBD($consulta);
@@ -30,7 +30,7 @@ if ($_SESSION['tipo_usuario'] == "administrador") {
         echo "</table>";
     } else {
         //busco todos los congresistas
-        $consulta = 'SELECT * FROM usuario';// WHERE tipo_usuario!="administrador"';
+        $consulta = 'SELECT * FROM usuario  ORDER BY (apellidos)';// WHERE tipo_usuario!="administrador"';
 
         //envio la consulta a MySQL
         $resultado = conexionBD($consulta);
@@ -41,15 +41,15 @@ if ($_SESSION['tipo_usuario'] == "administrador") {
         } else {
             echo "<table>";
             echo "<tr>";
-            echo "<td>Nombre</td>";
-            echo "<td>Apellidos</td>";
+            echo "<td>Nombre y Apellidos</td>";
+//            echo "<td>Apellidos</td>";
             echo "</tr>";
 
             //saco el nombre y apellidos de cada congresista
             while ($fila = mysql_fetch_array($resultado)) {
                 echo "<tr>";
-                echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['mail'] . '">' . $fila['nombre'] . '</a></td>';
-                echo "<td>" . $fila['apellidos'] . "</td>";
+                echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['mail'] . '">' . $fila['apellidos'] . ", " . $fila['nombre'] . '</a></td>';
+//                echo "<td>" . $fila['apellidos'] . "</td>";
                 echo "</tr>";
             }
             echo "</table>";
