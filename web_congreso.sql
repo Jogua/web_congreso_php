@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-05-2015 a las 19:03:25
+-- Tiempo de generación: 07-05-2015 a las 15:35:15
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `web_congreso`
 --
-CREATE DATABASE IF NOT EXISTS `web_congreso` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `web_congreso`;
 
 -- --------------------------------------------------------
 
@@ -78,7 +76,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`nombre`, `apellidos`, `centro_trabajo`, `telefono`, `mail`, `password`, `cuota_inscripcion`, `tipo_usuario`) VALUES
-('Antonio', 'Espinosa Jiménez', '', '999999999', 'jonnny0@hotmail.com', '12345678', '30', 'invitado');
+('Antonio', 'Espinosa Jiménez', '', '999999999', 'jonnny0@hotmail.com', '12345678', '30', 'administrador'),
+('José', 'Guadix Rosado', 'Universidad de Granada', '111111111', 'jose@gmail.com', '12345678', '15', 'invitado');
 
 --
 -- Índices para tablas volcadas

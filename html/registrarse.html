@@ -1,0 +1,48 @@
+ <script src="js/formularios.js"></script>  
+<div id="registrarse" class="modalmask">
+    <div class="modalbox movedown">
+        <a href="" title="Cerrar" class="close">X</a>
+        <h2>Registrarse</h2>
+        <br>
+        <form method="post" action="php/registrarse.php" onsubmit="return comprueba_formulario(this)">
+            <div class="izquierda">
+                <label for="nombre">Nombre:</label>
+                <br>
+                <input type="text" id="nombre" name="nombre" maxlength="20" required />
+                <br><br>
+                <label for="apellidos">Apellidos:</label>
+                <br>
+                <input type="text" id="apellidos" name="apellidos" maxlength="20" required />
+                <br><br>
+                <label for="contrasena">Contraseña:</label>
+                <br>
+                <input type="password" id="contrasena" name="password" maxlength="20" required />
+                <br><br>
+                <label for="confirmar_contrasena">Confirmar contraseña:</label>
+                <br>
+                <input type="password" id="confirmar_password" name="confirmar_password" maxlength="20" required />
+                <br><br>
+            </div>
+            <div class="derecha">
+                <label for="email">E-mail:</label>
+                <br>
+                <input type="email" id="mail" name="email"  maxlength="20" required />
+                <br><br>
+                <label for="telefono">Teléfono de contacto:</label>
+                <br>
+                <input type="text" maxlength="9" name="telefono" required />
+                <br/><br/>
+                <label for="tipo_usuario">Tipo usuario:</label>
+                <br>
+                <select name="tipo_usuario" id="tipo_usuario">
+                    <option value="invitado">Invitado</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="profesor">Profesor</option>
+                </select>
+                <br><br>
+                <button type="submit" title="Registrarse" name="registrarse"> Registrarse </button>
+            </div>
+        </form>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</div>

@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         <script src="js/formularios.js"></script>  
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
         <?php
-        include './php/conexion_BD.php';
+        include './php/conexion_bd.php';
         ?>
     </head>
     <body>

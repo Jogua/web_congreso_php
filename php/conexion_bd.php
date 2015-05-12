@@ -22,8 +22,6 @@ function conexionBD($pregunta) {
 
     if ($resultado == FALSE) {
         echo '<br>No se pudo realizar la consulta: ' . $pregunta . '<br>' . mysql_error();
-        mysql_close($conexion);
-        exit();
     }
     
     mysql_close($conexion);

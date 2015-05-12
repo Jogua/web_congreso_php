@@ -8,8 +8,8 @@ function comprueba_formulario(f) {
 }
 
 function check_password(f) {
-    var password1 = f.contrasena.value;
-    var password2 = f.contrasena2.value;
+    var password1 = f.password.value;
+    var password2 = f.confirmar_password.value;
     if (password1 != password2) {
         alert("Las contraseñas no coinciden.");
         return false;

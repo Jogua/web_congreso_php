@@ -1,6 +1,6 @@
 <?php
 
-include 'conexion_BD.php';
+include 'conexion_bd.php';
 include 'enviar_mail.php';
 session_start();
 //comprobación de que el password existente era correcto
