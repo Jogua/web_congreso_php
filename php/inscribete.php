@@ -13,29 +13,29 @@ include_once 'conexion_bd.php';
 <form class="formularioInscripcion" method="post" action="php/enviar_inscripcion.php" onsubmit="return comprueba_formulario(this)">
     <ul>
         <li>
-	    <label for="nombre"> Nombre: </label>
-	    <input type="text" name="nombre" required />
-	</li>
-	<li>
-	    <label for="apellidos">Apellidos:</label>
-	    <input type="text" name="apellidos" required />
-	</li>
-	<li>
-	    <label for="telefono">Telefono:</label>
-	    <input type="text" name="telefono" required />
-	</li>
-	<li>
-	    <label for="mail">E-mail:</label>
-	    <input type="text" name="mail" required />
-	</li>
-	<li>
-	    <label for="password"> Contraseña:</label>
-	    <input type="password" name="password" required/>
-	</li>
-	<li>
-	    <label for="confirmar_password"> Confirma la contraseña:</label>
-	    <input type="password" name="confirmar_password" required/>
-	</li>
+            <label for="nombre"> Nombre: </label>
+            <input type="text" name="nombre" required />
+        </li>
+        <li>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" required />
+        </li>
+        <li>
+            <label for="telefono">Telefono:</label>
+            <input type="text" name="telefono" required />
+        </li>
+        <li>
+            <label for="mail">E-mail:</label>
+            <input type="email" name="mail" required />
+        </li>
+        <li>
+            <label for="password"> Contraseña:</label>
+            <input type="password" name="password" required/>
+        </li>
+        <li>
+            <label for="confirmar_password"> Confirma la contraseña:</label>
+            <input type="password" name="confirmar_password" required/>
+        </li>
         <li>
             <label for="cuota"> Cuota de inscripción:</label>
             <select id="cuota" name="cuota" onchange="validar_usuario(this)">
@@ -57,7 +57,7 @@ include_once 'conexion_bd.php';
         <li>
             <label for="actividades">Actividades:</label>
 
-            <ul id="actividades">
+            <ul class="inscripcion_checkbox">
                 <?php
                 $consulta_actividades = "SELECT id_actividad, nombre_actividad FROM actividad";
                 $resultado_actividades = conexionBD($consulta_actividades);
@@ -74,12 +74,25 @@ include_once 'conexion_bd.php';
 
             </ul>
         </li>
+        <li>
+            <label for="actividades">Reserva de Hotel:</label>
+            <br>
+            <ul class="inscripcion_checkbox">
+                <li>
+                    <input type="checkbox" id="hotel" name="hotel" onchange="pedir_informacion_hotel(this)"/>
+                    <label for="hotel">¿Quieres reservar un Hotel?</label>
+                </li>
+            </ul>
+            <br>
+            <div id="datos_hotel">
+                
+            </div>
+        </li>
         <li id="precio">
             Precio Total: 50€ 
         </li>
         <li>
             <button class="submit" type="submit">Inscribirse</button>
-
         </li>
     </ul>
 </form>

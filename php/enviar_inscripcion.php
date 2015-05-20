@@ -3,6 +3,8 @@
 require_once 'enviar_mail.php';
 include_once 'conexion_bd.php';
 
+session_start();
+
 $nombre = $_POST['nombre'];
 $apellidos = $_POST['apellidos'];
 $telefono = $_POST['telefono'];
@@ -20,12 +22,18 @@ if (isset($_POST['universidad'])) {
     $universidad = "";
 }
 
+if (isset($_POST['hotel'])) {
+    $quiere_hotel = true;
+} else {
+    $quiere_hotel = false;
+}
 
 $actividadesInscritas = "";
 
 $consulta_cuotas = "SELECT * FROM cuota WHERE id_cuota=" . $id_cuota;
 $resultado_cuotas = conexionBD($consulta_cuotas);
 if ($resultado_cuotas) {
+    /*
     $fila_cuota = mysql_fetch_array($resultado_cuotas);
     switch ($fila_cuota['nombre_cuota']) {
         case "Profesor":
@@ -97,32 +105,31 @@ if ($resultado_cuotas) {
         }
     }
 
-    $asunto = '[Mensaje de Web] Inscripción al congreso';
-    $mensaje = 'Se ha inscrito al congreso en la categoria de '
-            . $fila_cuota['nombre_cuota'] . $universidad_str . '.<br/><br/>' . $actividadesInscritas
-            . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
-            . 'La forma de pago consiste en realizar una trasferencia indicando su nombre de usuario al siguiente 
-            número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a "congresosCEIIE@gmail.com"
-            un justificante de dicho pago con el asunto "Confirmación pago #' . $id_usuario . '".<br/><br/>'
-            . '¡Nos vemos pronto!';
+    iniciarSesion($mail);
 
-    if (enviarMail($mail, $asunto, $mensaje)) {
-        $asunto = '[Mensaje de Web] Inscripción de usuario';
-        $mensaje = $nombre . ' ' . $apellidos . ' se ha inscrito al congreso en la categoria de '
-                . $fila_cuota['nombre_cuota'] . $universidad_str . '.<br/><br/>' . $actividadesInscritas
-                . '<br/> El precio total es de: ' . $precio . '€<br/><br/>';
+    $exito = enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, $precio);
 
-        enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje);
+    if (!exito) {
+        salir('Lo sentimos, ha ocurrido un error durante la inscripción. \n Intentelo más tarde.');
+    }*/
+
+    if (!$quiere_hotel) {
         echo "<script>
             alert('Se ha inscrito correctamente.');
             location.href='../index.php?seccion=inscribete';
         </script>";
-    } else {
+    }else{
         echo "<script>
-            alert('Lo sentimos, ha ocurrido un error durante la inscripción. \n Intentelo más tarde.');
-            location.href='../index.php?seccion=inscribete';
-        </script>";
+            alert('Se ha inscrito correctamente.');
+            location.href='../index.php?seccion=hoteles&ini=" . $_POST['fecha_entrada'] . "&fin=" . $_POST['fecha_salida']
+                . "&hab=" . $_POST['n_habitaciones'] . "&hues=" . $_POST['n_huespedes'] . "';" .
+        "</script>";
     }
+}
+
+function iniciarSesion($mail) {
+    $_SESSION['mail'] = $mail;
+    $_SESSION['tipo_usuario'] = "Congresista";
 }
 
 function salir($str, $code) {
@@ -131,5 +138,29 @@ function salir($str, $code) {
             location.href='../index.php?seccion=inscribete';
         </script>";
     exit($code);
+}
+
+function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_cuota, $universidad_str, $actividadesInscritas, $precio) {
+    $asunto = '[Mensaje de Web] Inscripción al congreso';
+    $mensaje = 'Se ha inscrito al congreso en la categoria de '
+            . $nombre_cuota . $universidad_str . '.<br/><br/>' . $actividadesInscritas
+            . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
+            . 'La forma de pago consiste en realizar una trasferencia indicando su nombre de usuario al siguiente 
+            número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a "congresosCEIIE@gmail.com"
+            un justificante de dicho pago con el asunto "Confirmación pago #' . $id_usuario . '".<br/><br/>'
+            . '¡Nos vemos pronto!';
+
+    if (enviarMail($mail, $asunto, $mensaje)) {
+        $asunto = '[Mensaje de Web] Inscripción de usuario';
+        $mensaje = $nombre . ' ' . $apellidos . ' con dirección de correo: <strong>' . $mail . '</strong> '
+                . 'se ha inscrito al congreso en la categoria de '
+                . $nombre_cuota . $universidad_str . '.<br/><br/>' . $actividadesInscritas
+                . '<br/> El precio total es de: ' . $precio . '€<br/><br/>';
+
+        enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje);
+        return true;
+    } else {
+        return false;
+    }
 }
 ?>

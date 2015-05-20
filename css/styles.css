@@ -271,25 +271,25 @@ aparezcan negros y sin subrayar */
     padding: 0px;
 }
 
-.formularioInscripcion #actividades{
+.formularioInscripcion .inscripcion_checkbox{
     margin-left: 150px;
 }
 
-.formularioInscripcion #actividades input{
+.formularioInscripcion .inscripcion_checkbox input{
     float: left;
     width: 20px;
     margin-right: 10px;
 }
 
-.formularioInscripcion #actividades label{
+.formularioInscripcion .inscripcion_checkbox label{
     font-weight: bold;
     margin-top: 0px;
     padding: 0px 3px 3px 0px;
     width: auto;
 }
 
-.formularioInscripcion button {
-    margin-left: 170px;
+.formularioInscripcion #datos_hotel input{
+    width: auto;
 }
 
 .formularioInscripcion #precio{
@@ -299,6 +299,10 @@ aparezcan negros y sin subrayar */
     margin-top: 10px;
     margin-left: 150px;
     padding: 3px 3px 3px 0px;
+}
+
+.formularioInscripcion button {
+    margin-left: 170px;
 }
 
 /* estilos botones formulario */

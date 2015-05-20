@@ -16,7 +16,6 @@ if (mysql_num_rows($resultado) == 0) {
     }
 } else {
     $fila = mysql_fetch_array($resultado);
-    $_SESSION['nombre'] = $fila['nombre'];
     $_SESSION['mail'] = $fila['mail'];
     $_SESSION['tipo_usuario'] = $fila['tipo_usuario'];
     header('Location:' . $_SERVER['HTTP_REFERER']);
