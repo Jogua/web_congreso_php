@@ -1,4 +1,5 @@
 <?php
+include_once 'conexion_bd.php';
 
 function destacar($activo) {
     if ($activo) {
@@ -25,8 +26,18 @@ destacar($seccion == "actividades" || $seccion == "detalle_visita");
 ?>
 <a href="index.php?seccion=actividades">Actividades</a> 
 <ul>
-    <li> <a href="index.php?seccion=detalle_visita&visita=alhambra">Visita Alhambra</a> </li>
-    <li> <a href="index.php?seccion=detalle_visita&visita=sierra">Visita Sierra Nevada</a> </li>
+    <?php
+        $consulta_actividades = "SELECT id_actividad, nombre_actividad FROM actividad";
+        $resultado_actividades = conexionBD($consulta_actividades);
+        
+        if($resultado_actividades){
+            while ($fila = mysql_fetch_array($resultado_actividades)) {
+                echo '<li> <a href="index.php?seccion=detalle_visita&visita=' . $fila['id_actividad'] . '">' . $fila['nombre_actividad'] . '</a> </li>';
+            }
+        }
+    ?>
+<!--    <li> <a href="index.php?seccion=detalle_visita&visita=alhambra">Visita Alhambra</a> </li>
+    <li> <a href="index.php?seccion=detalle_visita&visita=sierra">Visita Sierra Nevada</a> </li>-->
 </ul>
 </li>
 
