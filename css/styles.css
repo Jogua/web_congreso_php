@@ -405,6 +405,26 @@ button.submit:active {
     float: right;
 }
 
+#iniciar_sesion {
+    display: flex;
+    /*margin-left: 50px;*/
+    justify-content: center;
+}
+
+#iniciar_sesion button{
+    margin-left: 40px; 
+}
+
+#recordar_password {
+    font-size: 14px;
+}
+
+#mail_incorrecto{
+    margin-left: 30px;
+    color: red;
+}
+
+
 /*
  * CLASES PARA LAS VENTANAS MODALES.
  */
@@ -454,9 +474,9 @@ button.submit:active {
     text-decoration: none;
     font-weight: bold;
     border-radius:20px;
- 
+
 }
- 
+
 .close:hover {
     background-color: #00a2e8;
     color: white;
