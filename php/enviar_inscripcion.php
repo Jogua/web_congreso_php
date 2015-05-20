@@ -103,7 +103,7 @@ if ($resultado_cuotas) {
             . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
             . 'La forma de pago consiste en realizar una trasferencia indicando su nombre de usuario al siguiente 
             número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a "congresosCEIIE@gmail.com"
-            un justificante de dicho pago con el asunto "Confirmación pago ' . $apellidos . ', ' . $nombre . '".<br/><br/>'
+            un justificante de dicho pago con el asunto "Confirmación pago #' . $id_usuario . '".<br/><br/>'
             . '¡Nos vemos pronto!';
 
     if (enviarMail($mail, $asunto, $mensaje)) {
