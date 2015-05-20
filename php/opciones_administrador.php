@@ -65,24 +65,8 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                     echo 'Importe total: ' . $precio_total . ' €';
                 }
             }
-
-
-
-
-
-
-//            echo 'Precio total de inscripción: ' . $fila[''] . '<br />';
-//            usuario = cuota inscripción --- cuota = id_cuota
-//
-//            echo "<tr>";
-//            echo "<td>" . $fila['nombre'] . "</td>";
-//            echo "<td>" . $fila['apellidos'] . "</td>";
-//            echo "<td>" . $fila['mail'] . "</td>";
-//            echo "<td>" . $fila['nombre_tipo'] . "</td>";
-//            echo "</tr>";
-//            echo "</tbody>";
-//            echo "</table>";
         }
+        
     } else {
         //busco todos los congresistas
         $consulta = 'SELECT * FROM usuario WHERE tipo_usuario!="Administrador"';
