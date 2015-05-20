@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2015 a las 10:09:15
+-- Tiempo de generación: 20-05-2015 a las 12:09:02
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -104,15 +104,17 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `password` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `cuota_inscripcion` int(10) unsigned DEFAULT NULL,
   `tipo_usuario` enum('Administrador','Congresista') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Congresista'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellidos`, `centro_trabajo`, `telefono`, `mail`, `password`, `cuota_inscripcion`, `tipo_usuario`) VALUES
-(1, 'Jose', 'Guadix Rosado', NULL, '645337375', 'josegua93@gmail.com', '12341234', 1, 'Administrador'),
-(2, 'Pepito', 'Flores', NULL, '645337375', 'j@g.es', '12341234', 2, 'Congresista');
+(1, 'Jose', 'Guadix Rosado', NULL, '645337375', 'josegua93@gmail.com', '12341234', NULL, 'Administrador'),
+(11, 'Jose', 'Guadix Rosado', ' de Granada', '1234', 'joseguadix_5@hotmail.com', '12341234', 2, 'Congresista'),
+(12, 'Jose', 'Guadix Rosado', 'Universidad de Granada', '1234', 'j@g.es', '12341234', 3, 'Congresista'),
+(13, 'Jose', 'Guadix Rosado', '', '1234', 'j2@g.es', '12341234', 1, 'Congresista');
 
 -- --------------------------------------------------------
 
@@ -124,6 +126,15 @@ CREATE TABLE IF NOT EXISTS `usuario_tiene_actividad` (
   `id_usuario` int(10) unsigned NOT NULL,
   `id_actividad` int(10) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario_tiene_actividad`
+--
+
+INSERT INTO `usuario_tiene_actividad` (`id_usuario`, `id_actividad`) VALUES
+(11, 1),
+(12, 2),
+(12, 4);
 
 --
 -- Índices para tablas volcadas
@@ -177,7 +188,7 @@ MODIFY `id_cuota` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id_usuario` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_usuario` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
 --
@@ -188,20 +199,6 @@ MODIFY `id_usuario` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `cuota_tiene_actividad`
 ADD CONSTRAINT `fk_cuota_tiene_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON UPDATE CASCADE,
 ADD CONSTRAINT `fk_cuota_tiene_actividad_id_cuota` FOREIGN KEY (`id_cuota`) REFERENCES `cuota` (`id_cuota`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `cuota_tiene_actividad`
---
-ALTER TABLE `cuota_tiene_actividad`
-ADD CONSTRAINT `fk_cuota_tiene_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON UPDATE CASCADE,
-ADD CONSTRAINT `fk_cuota_tiene_actividad_id_cuota` FOREIGN KEY (`id_cuota`) REFERENCES `cuota` (`id_cuota`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuario_tiene_actividad`
---
-ALTER TABLE `usuario_tiene_actividad`
-ADD CONSTRAINT `fk_usuario_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON UPDATE CASCADE,
-ADD CONSTRAINT `fk_usuario_actividad_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario_tiene_actividad`
