@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2015 a las 09:51:37
+-- Tiempo de generación: 20-05-2015 a las 10:09:15
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -91,27 +91,6 @@ INSERT INTO `cuota_tiene_actividad` (`id_cuota`, `id_actividad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_usuario`
---
-
-CREATE TABLE IF NOT EXISTS `tipo_usuario` (
-`id_tipo_usuario` int(11) NOT NULL,
-  `nombre_tipo` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `tipo_usuario`
---
-
-INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `nombre_tipo`) VALUES
-(1, 'Administrador'),
-(2, 'Invitado'),
-(3, 'Estudiante'),
-(4, 'Profesor');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -124,16 +103,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `mail` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `cuota_inscripcion` int(10) unsigned DEFAULT NULL,
-  `id_tipo_usuario` int(11) DEFAULT NULL
+  `tipo_usuario` enum('Administrador','Congresista') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Congresista'
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellidos`, `centro_trabajo`, `telefono`, `mail`, `password`, `cuota_inscripcion`, `id_tipo_usuario`) VALUES
-(1, 'Jose', 'Guadix Rosado', NULL, '645337375', 'josegua93@gmail.com', '12341234', 1, 2),
-(2, 'Pepito', 'Flores', NULL, '645337375', 'j@g.es', '12341234', 2, 3);
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellidos`, `centro_trabajo`, `telefono`, `mail`, `password`, `cuota_inscripcion`, `tipo_usuario`) VALUES
+(1, 'Jose', 'Guadix Rosado', NULL, '645337375', 'josegua93@gmail.com', '12341234', 1, 'Administrador'),
+(2, 'Pepito', 'Flores', NULL, '645337375', 'j@g.es', '12341234', 2, 'Congresista');
 
 -- --------------------------------------------------------
 
@@ -169,16 +148,10 @@ ALTER TABLE `cuota_tiene_actividad`
  ADD PRIMARY KEY (`id_cuota`,`id_actividad`), ADD KEY `fk_cuota_tiene_actividad_id_actividad` (`id_actividad`);
 
 --
--- Indices de la tabla `tipo_usuario`
---
-ALTER TABLE `tipo_usuario`
- ADD PRIMARY KEY (`id_tipo_usuario`);
-
---
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `mail` (`mail`), ADD KEY `id_tipo_usuario` (`id_tipo_usuario`);
+ ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `mail` (`mail`);
 
 --
 -- Indices de la tabla `usuario_tiene_actividad`
@@ -201,11 +174,6 @@ MODIFY `id_actividad` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 ALTER TABLE `cuota`
 MODIFY `id_cuota` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `tipo_usuario`
---
-ALTER TABLE `tipo_usuario`
-MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -222,10 +190,18 @@ ADD CONSTRAINT `fk_cuota_tiene_actividad_id_actividad` FOREIGN KEY (`id_activida
 ADD CONSTRAINT `fk_cuota_tiene_actividad_id_cuota` FOREIGN KEY (`id_cuota`) REFERENCES `cuota` (`id_cuota`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `usuario`
+-- Filtros para la tabla `cuota_tiene_actividad`
 --
-ALTER TABLE `usuario`
-ADD CONSTRAINT `fk_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON UPDATE CASCADE;
+ALTER TABLE `cuota_tiene_actividad`
+ADD CONSTRAINT `fk_cuota_tiene_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_cuota_tiene_actividad_id_cuota` FOREIGN KEY (`id_cuota`) REFERENCES `cuota` (`id_cuota`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuario_tiene_actividad`
+--
+ALTER TABLE `usuario_tiene_actividad`
+ADD CONSTRAINT `fk_usuario_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_usuario_actividad_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario_tiene_actividad`

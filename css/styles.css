@@ -263,7 +263,7 @@ aparezcan negros y sin subrayar */
 
 .formularioInscripcion select{
     height:30px; 
-    width:150px; 
+    /*width:150px;*/ 
     padding:5px 8px;
 }
 
@@ -272,7 +272,6 @@ aparezcan negros y sin subrayar */
 }
 
 .formularioInscripcion #actividades{
-    clear: both;
     margin-left: 150px;
 }
 

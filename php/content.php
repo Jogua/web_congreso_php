@@ -1,13 +1,19 @@
 <?php
-    if ($seccion == "detalle_ponencia") { // el ide lo guarda en la parte de la barraDerecha
-        $direccion = './php/detalle_ponencia.php';
-    } else if ($seccion == "detalle_visita") {
-        $visita = $_GET["visita"];
-        $direccion = './php/detalle_visita.php';
-    } else if ($seccion == "administrador") {    
+
+switch ($seccion) {
+    case "detalle_ponencia":
+    case "detalle_visita":
+    case "actividades":
+    case "inscribete":
+        $direccion = './php/' . $seccion . '.php';
+        break;
+    case "administrador":
         $direccion = './php/opciones_administrador.php';
-    } else {
+        break;
+    default:
         $direccion = './html/' . $seccion . '.html';
-    }
-    include $direccion;
+        break;
+}
+
+include $direccion;
 ?>
