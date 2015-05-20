@@ -21,6 +21,10 @@ include_once 'conexion_bd.php';
 	    <input type="text" name="apellidos" required />
 	</li>
 	<li>
+	    <label for="telefono">Telefono:</label>
+	    <input type="text" name="telefono" required />
+	</li>
+	<li>
 	    <label for="mail">E-mail:</label>
 	    <input type="text" name="mail" required />
 	</li>
