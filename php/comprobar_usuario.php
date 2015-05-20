@@ -8,7 +8,7 @@ $consulta = 'SELECT * FROM usuario, tipo_usuario WHERE mail="' . $_POST['email']
 $resultado = conexionBD($consulta);
 
 if (mysql_num_rows ($resultado) == 0) {
-    header('Location:' . $_SERVER['HTTP_REFERER'] . '#iniciar_sesion_error');
+    header('Location:' . $_SERVER['HTTP_REFERER'] . '&error_inicio_sesion=1');
 } else {
     $fila = mysql_fetch_array ($resultado);
     $_SESSION['nombre'] = $fila['nombre'];
