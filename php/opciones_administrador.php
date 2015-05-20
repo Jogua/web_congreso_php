@@ -4,10 +4,9 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
 
     if (isset($_GET['congresista'])) {
         //busco los datos del congresista
-        $consulta = 'SELECT * FROM usuario, tipo_usuario WHERE '
-                . 'usuario.id_tipo_usuario=tipo_usuario.id_tipo_usuario AND '
-                . 'mail="' . $_GET['congresista'] . '" AND nombre_tipo!="Administrador" '
-                . 'AND cuota_inscripcion IS NOT NULL';
+        $consulta = 'SELECT * FROM usuario, cuota WHERE id_usuario=' . $_GET['congresista']
+                . ' AND tipo_usuario!="Administrador"'
+                . ' AND cuota_inscripcion=id_cuota';
 
         //envio la consulta a MySQL
         $resultado = conexionBD($consulta);
@@ -18,34 +17,75 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
             location.href= " ' . $_SERVER ['HTTP_REFERER'] . '";
             </script>';
         } else {
-            echo '<h2>Detalles de un congresista</h2>';
-            echo '<table id="ponencias">
-            <thead class="negrita">
-            <td class="columnaPonencias centrar">Apellidos</td>
-            <td class="columnaPonencias centrar">Nombre</td>
-            <td class="columnaPonencias centrar">E-Mail</td>
-            <td class="columnaPonencias centrar">Tipo usuario</td>
-            </thead>
-            <tbody>';
-
-
             $fila = mysql_fetch_array($resultado);
 
+            $precio_total = $fila['importe'];
 
-            echo "<tr>";
-            echo "<td>" . $fila['nombre'] . "</td>";
-            echo "<td>" . $fila['apellidos'] . "</td>";
-            echo "<td>" . $fila['mail'] . "</td>";
-            echo "<td>" . $fila['nombre_tipo'] . "</td>";
-            echo "</tr>";
-            echo "</tbody>";
-            echo "</table>";
+            $consulta_actividades = 'SELECT * FROM usuario_tiene_actividad, actividad WHERE id_usuario=' . $_GET['congresista']
+                    . ' AND usuario_tiene_actividad.id_actividad=actividad.id_actividad';
+
+            //envio la consulta a MySQL
+            $resultado_actividades = conexionBD($consulta_actividades);
+
+            if (!$resultado_actividades) {
+                echo '<script>
+                alert("ERROR: Al obtener la lista de actividades.");
+                location.href= " ' . $_SERVER ['HTTP_REFERER'] . '";
+                </script>';
+            } else {
+
+                $consulta_actividades_incluidas = 'SELECT * FROM cuota_tiene_actividad, actividad WHERE id_cuota=' . $fila['id_cuota']
+                        . ' AND cuota_tiene_actividad.id_actividad=actividad.id_actividad';
+
+                //envio la consulta a MySQL
+                $resultado_actividades_incluidas = conexionBD($consulta_actividades_incluidas);
+
+                if (!$resultado_actividades_incluidas) {
+                    echo '<script>
+                alert("ERROR: Al obtener la lista de actividades.");
+                location.href= " ' . $_SERVER ['HTTP_REFERER'] . '";
+                </script>';
+                } else {
+
+                    echo '<h2>Detalles de un congresista</h2>';
+                    echo '<div>';
+                    echo 'Nombre: ' . $fila['nombre'] . '<br />';
+                    echo 'Apellidos: ' . $fila['apellidos'] . '<br />';
+                    echo 'E-mail: ' . $fila['mail'] . '<br />';
+                    echo 'Cuota de usuario: ' . $fila['nombre_cuota'] . ' (' . $fila['importe'] . ' €)<br />';
+                    echo '<ul>';
+                    while ($fila_actividades = mysql_fetch_array($resultado_actividades)) {
+                        echo '<li>' . $fila_actividades['nombre_actividad'] . ' (' . $fila_actividades['importe'] . ' €)</li>';
+                        $precio_total += $fila_actividades['importe'];
+                    }
+                    while ($fila_actividades = mysql_fetch_array($resultado_actividades_incluidas)) {
+                        echo '<li>' . $fila_actividades['nombre_actividad'] . ' (Incluída en la cuota de inscripción)</li>';
+                    }
+                    echo '</ul>';
+                    echo 'Importe total: ' . $precio_total . ' €';
+                }
+            }
+
+
+
+
+
+
+//            echo 'Precio total de inscripción: ' . $fila[''] . '<br />';
+//            usuario = cuota inscripción --- cuota = id_cuota
+//
+//            echo "<tr>";
+//            echo "<td>" . $fila['nombre'] . "</td>";
+//            echo "<td>" . $fila['apellidos'] . "</td>";
+//            echo "<td>" . $fila['mail'] . "</td>";
+//            echo "<td>" . $fila['nombre_tipo'] . "</td>";
+//            echo "</tr>";
+//            echo "</tbody>";
+//            echo "</table>";
         }
     } else {
         //busco todos los congresistas
-        $consulta = 'SELECT * FROM usuario, tipo_usuario WHERE cuota_inscripcion IS NOT NULL AND '
-                . 'usuario.id_tipo_usuario=tipo_usuario.id_tipo_usuario '
-                . 'ORDER BY (apellidos)';
+        $consulta = 'SELECT * FROM usuario WHERE tipo_usuario!="Administrador"';
 
         //envio la consulta a MySQL
         $resultado = conexionBD($consulta);
@@ -74,10 +114,10 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                 //saco el nombre y apellidos de cada congresista
                 while ($fila = mysql_fetch_array($resultado)) {
                     echo "<tr>";
-                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['mail'] . '">' . $fila['apellidos'] . '</a></td>';
-                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['mail'] . '">' . $fila['nombre'] . '</a></td>';
-                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['mail'] . '">' . $fila['mail'] . '</a></td>';
-                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['mail'] . '">' . $fila['nombre_tipo'] . '</a></td>';
+                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['id_usuario'] . '">' . $fila['apellidos'] . '</a></td>';
+                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['id_usuario'] . '">' . $fila['nombre'] . '</a></td>';
+                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['id_usuario'] . '">' . $fila['mail'] . '</a></td>';
+                    echo '<td><a href="index.php?seccion=administrador&congresista=' . $fila['id_usuario'] . '">' . $fila['tipo_usuario'] . '</a></td>';
 
                     echo "</tr>";
                 }
