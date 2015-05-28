@@ -24,9 +24,6 @@ if (isset($_GET['hues'])) {
 $dias = ((strtotime($fecha_salida) - strtotime($fecha_entrada))/3600/24);
 echo "<br>";
 
-$fecha_entrada = str_replace("-", "", $fecha_entrada);
-$fecha_salida = str_replace("-", "", $fecha_salida);
-
 echo $fecha_entrada;
 echo "<br>";
 echo $fecha_salida;
@@ -37,6 +34,9 @@ echo $n_habitaciones;
 echo "<br>";
 echo $n_huespedes;
 echo "<br>";
+
+$fecha_entrada = str_replace("-", "", $fecha_entrada);
+$fecha_salida = str_replace("-", "", $fecha_salida);
 
 $url = "localhost/GranaHome_php/hoteles/Granada/f_inicio/" . $fecha_entrada . "/f_fin/" . $fecha_entrada . "/hab/" . $n_habitaciones . "/huespedes/" . $n_huespedes;
 
