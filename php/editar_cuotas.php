@@ -3,6 +3,7 @@
 if ($_SESSION['tipo_usuario'] == "Administrador") {
 
     if (isset($_GET['id'])) {
+        echo '<h2>Cuota a modificar</h2>';
         //busco la cuota
         $consulta = 'SELECT * FROM cuota WHERE id_cuota=' . $_GET['id'];
 
@@ -53,9 +54,9 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
             } else {
                 echo '<table id="cuotas">
             <thead class="negrita">
-            <td class="columnaPonencias centrar">Nombre</td>
-            <td class="columnaPonencias centrar">Descripción</td>
-            <td class="columnaPonencias centrar">Importe</td>
+            <td class="centrar">Nombre</td>
+            <td class="centrar">Descripción</td>
+            <td class="centrar">Importe</td>
             </thead>
             <tbody>';
 
@@ -64,7 +65,7 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                     echo "<tr>";
                     echo '<td class="centrar"><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['nombre_cuota'] . '</a></td>';
                     echo '<td><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['descripcion'] . '</a></td>';
-                    echo '<td class="centrar"><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['importe'] . '</a></td>';
+                    echo '<td class="centrar"><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['importe'] . ' €</a></td>';
                     echo "</tr>";
                 }
                 echo "</tbody>";

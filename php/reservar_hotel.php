@@ -87,14 +87,14 @@ if ($decode->exito) {
 } else {
     echo "<script type='text/javascript'>
             alert('No se ha podido reservar la habiación.');
-            location.href='../index.php?seccion=inscribete';
+            location.href='../index.php?seccion=ficha_inscripcion';
         </script>";
 }
 
 function salir($str, $code) {
     echo "<script type='text/javascript'>
             alert('" . $str . "');
-            location.href='../index.php?seccion=inscribete';
+            location.href='../index.php?seccion=ficha_inscripcion';
         </script>";
     exit($code);
 }

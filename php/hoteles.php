@@ -108,7 +108,7 @@ echo '</table>';
 function salir($str, $code) {
     echo "<script type='text/javascript'>
             alert('" . $str . "');
-            location.href='index.php?seccion=inscribete';
+            location.href='index.php?seccion=ficha_inscripcion';
         </script>";
     exit($code);
 }

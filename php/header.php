@@ -42,7 +42,7 @@ destacar($seccion == "actividades" || $seccion == "detalle_visita");
 </li>
 
 <?php
-destacar($seccion == "ponencias");
+destacar($seccion == "ponencias" || $seccion == "detalle_ponencia");
 ?>
 <a href="index.php?seccion=ponencias">Ponencias</a>
 </li>

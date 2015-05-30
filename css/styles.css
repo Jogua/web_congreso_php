@@ -141,6 +141,11 @@ footer p {
     text-align: center;
     padding: 30px;
 }
+
+footer a {
+    text-decoration: none;
+}
+
 .clearfloat {
     clear: both;
     height: 0;
@@ -156,6 +161,13 @@ footer p {
     margin-top: 5px;
     margin-bottom: 25px;
 }
+
+textarea {
+    padding:8px; 
+    resize: none;
+}
+
+
 /* para que los enlaces locales ya visitados dentro de una misma página 
 aparezcan negros y sin subrayar */
 .enlaceLocal {
@@ -215,10 +227,11 @@ aparezcan negros y sin subrayar */
     width:325px; 
     padding:5px 8px;
 }
-textarea {
-    padding:8px; 
-    resize: none;
+
+.formulario textarea{
+    width: 325px;
 }
+
 .formulario button {
     margin-left:125px;
 }
@@ -363,7 +376,7 @@ button.submit:active {
 
 #cuotas thead {
     color: white;
-    background-color: green;
+    background-color: blue;
 }
 
 #cuotas a{
@@ -372,9 +385,12 @@ button.submit:active {
 }
 
 #cuotas td{
-    padding: 10px;
+    padding: 5px;
 }
 
+#cuotas tbody tr:hover{
+    background-color: lightblue;
+}
 
 /*
  * Detalle de las ponencias
@@ -449,12 +465,6 @@ button.submit:active {
 
 .tablaBusqueda .descripcion{
     padding: 20px;
-}
-
-.tablaBusqueda .descripcion img{
-/*    -ms-interpolation-mode: bicubic;
-    max-width: 200px;
-    max-height: 200px;*/
 }
 
 .tablaBusqueda td {
