@@ -223,6 +223,10 @@ aparezcan negros y sin subrayar */
     margin-left:125px;
 }
 
+#text_area_descripcion{
+    resize: none;
+    padding: 20px;
+}
 /*
  * Estilos Formulario de Inscripción
  */
