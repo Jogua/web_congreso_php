@@ -45,10 +45,9 @@ function validar_usuario(select) {
 }
 
 function actualizar_actividades(usuario) {
-    var act_incluidas_0 = [];
-    var act_incluidas_1 = [];
+//    var act_incluidas_1 = [];
     var act_incluidas_2 = ["act_3"];
-    var act_incluidas_3 = [];
+//    var act_incluidas_3 = [];
 
     var actividad;
     for (var i = 1; i <= 3; i++) {
