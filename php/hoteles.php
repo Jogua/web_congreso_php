@@ -21,7 +21,15 @@ if (isset($_GET['hues'])) {
     salir('Falta número de huespedes por habitación.', -2);
 }
 
-$dias = ((strtotime($fecha_salida) - strtotime($fecha_entrada))/3600/24);
+$dias = ((strtotime($fecha_salida) - strtotime($fecha_entrada)) / 3600 / 24);
+if ($dias < 0) {
+    salir('La fecha de salida es anterior a la de entrada.', -3);
+}
+
+if (new DateTime($fecha_entrada) < new DateTime()) {
+    salir('La fecha de entrada tiene que ser posterior a la fecha actual.', -3);
+}
+
 echo "<br>";
 
 echo $fecha_entrada;
@@ -38,8 +46,9 @@ echo "<br>";
 $fecha_entrada = str_replace("-", "", $fecha_entrada);
 $fecha_salida = str_replace("-", "", $fecha_salida);
 
-$url = "localhost/GranaHome_php/hoteles/Granada/f_inicio/" . $fecha_entrada . "/f_fin/" . $fecha_entrada . "/hab/" . $n_habitaciones . "/huespedes/" . $n_huespedes;
-
+$url = "localhost/GranaHome_php/hoteles/Granada/f_inicio/" . $fecha_entrada . "/f_fin/" . $fecha_salida . "/hab/" . $n_habitaciones . "/huespedes/" . $n_huespedes;
+echo $url;
+echo "<br>";
 $sesion = curl_init($url);
 // definir tipo de petición a realizar: POST
 curl_setopt($sesion, CURLOPT_POST, false);
@@ -65,26 +74,32 @@ echo '<table class="tablaBusqueda">';
 for ($i = 0; $i < count($decode); $i++) {
     echo '<tr>';
     echo '<td class="centrado_horizontal">';
-    echo '<img src="' . $decode[$i]->foto_alojamiento . '" alt="Foto de ' . $decode[$i]->nombre_hotel . '" />';
+    echo '<img class="centrada borde_blanco" src="' . $decode[$i]->foto_alojamiento . '" alt="Foto de ' . $decode[$i]->nombre_hotel . '" />';
     echo '</td>';
     echo '<td class="descripcion">';
-//        echo '<h2> ' . $decode[$i]->nombre_hotel . ' <img src="n_estrellas.jpg" /></h2>';
-    echo '<h2> ' . $decode[$i]->nombre_hotel . ' (nº estrellas) </h2>';
+    echo '<h2> ' . $decode[$i]->nombre_hotel . ' <img src="images/icon_estrella_' . $decode[$i]->num_estrellas . '.png" /></h2>';
 
-//    echo '<i> ' . $fila_alojamiento['direccion'] . ', Granada </i>';
-    echo '<i> Dirección, Granada </i>';
+    echo '<i> ' . $decode[$i]->direccion . ', Granada </i>';
+//    echo '<i> Dirección, Granada </i>';
     echo '<br><br>';
-//    echo $fila_alojamiento['descripcion_breve'];
-//    echo '<br><br>';
+    echo $decode[$i]->descripcion;
+    echo '<br><br>';
     for ($j = 0; $j < count($decode[$i]->detalle_tipo); $j++) {
         echo '<hr/>';
+        echo '<form method="post" action="php/reservar_hotel.php">';
+        echo '<input type="hidden" name="hotel" value="' . $decode[$i]->id_hotel . '"/>';
+        echo '<input type="hidden" name="hab" value="' . $decode[$i]->detalle_tipo[$j]->id_tipo . '"/>';
+        echo '<input type="hidden" name="ini" value="' . $fecha_entrada . '"/>';
+        echo '<input type="hidden" name="fin" value="' . $fecha_salida . '"/>';
+        echo '<input type="hidden" name="num" value="' . $n_habitaciones . '"/>';
         echo '<h4> ' . $decode[$i]->detalle_tipo[$j]->nombre_tipo . ' </h4>';
         echo $decode[$i]->detalle_tipo[$j]->capacidad . ' personas <br>';
-        echo $decode[$i]->detalle_tipo[$j]->precio * $dias . ' € ';
+        echo $decode[$i]->detalle_tipo[$j]->precio * $dias * $n_habitaciones . ' € ';
         echo '<button type="submit" id="masInfo" name="masInfo">Reservar</button>';
+        echo '</form>';
         echo '<br><br>';
     }
-        echo '<hr/>';
+    echo '<hr/>';
     echo '<br><br>';
 //    echo '<a href="index.php?sec=alojamiento&aloj=' . $decode[$i]->id_hotel . '" >';
 //    echo '<button type="submit" id="masInfo" name="masInfo">Reservar</button>';
@@ -94,16 +109,10 @@ for ($i = 0; $i < count($decode); $i++) {
 }
 echo '</table>';
 
-//
-//foreach ($decode as $key => $value) {
-//    echo $key . " -> "  . "<br>";
-//}
-
-
 function salir($str, $code) {
     echo "<script type='text/javascript'>
             alert('" . $str . "');
-            location.href='../index.php?seccion=inscribete';
+            location.href='index.php?seccion=inscribete';
         </script>";
     exit($code);
 }

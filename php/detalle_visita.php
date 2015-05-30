@@ -16,7 +16,7 @@ if ($resultado_actividad) {
     $fila = mysql_fetch_array($resultado_actividad);
     if ($fila) {
         echo "<h2>" . $fila['nombre_actividad'] . "</h2>";
-        echo "<img class='centrada' src=" . $fila['url_foto'] . " title='Imagen de la actividad' alt='Imagen de la actividad' />";
+        echo "<img class='centrada borde_blanco' src=" . $fila['url_foto'] . " title='Imagen de la actividad' alt='Imagen de la actividad' />";
         $fecha = date_create($fila['fecha_hora']);
         echo "<p class='negrita'> Fecha: " . date_format($fecha, 'd-m-Y H:i:s') . "</p>";
         echo "<p class='negrita'> Precio: " . $fila['importe'] . " €</p>";
