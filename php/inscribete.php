@@ -59,14 +59,14 @@ include_once 'conexion_bd.php';
 
             <ul class="inscripcion_checkbox">
                 <?php
-                $consulta_actividades = "SELECT id_actividad, nombre_actividad FROM actividad";
+                $consulta_actividades = "SELECT id_actividad, nombre_actividad, importe FROM actividad";
                 $resultado_actividades = conexionBD($consulta_actividades);
                 echo '<br>';
                 if ($resultado_actividades) {
                     while ($fila = mysql_fetch_array($resultado_actividades)) {
                         echo '<li>';
                         echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades[]" value=' . $fila['id_actividad'] . ' onchange="actualizar_precio()" />';
-                        echo '<label for="act_' . $fila['id_actividad'] . '"> ' . $fila['nombre_actividad'] . '</label>';
+                        echo '<label for="act_' . $fila['id_actividad'] . '"> ' . $fila['nombre_actividad'] . " (" . $fila['importe'] . " €)" .'</label>';
                         echo '</li>';
                     }
                 }
