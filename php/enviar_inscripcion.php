@@ -33,7 +33,7 @@ $actividadesInscritas = "";
 $consulta_cuotas = "SELECT * FROM cuota WHERE id_cuota=" . $id_cuota;
 $resultado_cuotas = conexionBD($consulta_cuotas);
 if ($resultado_cuotas) {
-    /*
+    
     $fila_cuota = mysql_fetch_array($resultado_cuotas);
     switch ($fila_cuota['nombre_cuota']) {
         case "Profesor":
@@ -107,11 +107,11 @@ if ($resultado_cuotas) {
 
     iniciarSesion($mail);
 
-    $exito = enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, $precio);
+//    $exito = enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, $precio);
 
-    if (!exito) {
-        salir('Lo sentimos, ha ocurrido un error durante la inscripción. \n Intentelo más tarde.');
-    }*/
+//    if (!exito) {
+//        salir('Lo sentimos, ha ocurrido un error durante la inscripción. \n Intentelo más tarde.');
+//    }
 
     if (!$quiere_hotel) {
         echo "<script>

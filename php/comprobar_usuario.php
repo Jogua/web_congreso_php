@@ -10,9 +10,13 @@ $resultado = conexionBD($consulta);
 
 if (mysql_num_rows($resultado) == 0) {
     if (isset($_GET['error'])) {
-        header('Location:' . $_SERVER['HTTP_REFERER'] );
-    }  else {
-        header('Location:' . $_SERVER['HTTP_REFERER'] . '&error=1');
+        header('Location:' . $_SERVER['HTTP_REFERER']);
+    } else {
+        if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
+            header('Location:' . $_SERVER['HTTP_REFERER'] . '&error=1');
+        }else{
+            header('Location:' . $_SERVER['HTTP_REFERER'] . '?error=1');
+        }
     }
 } else {
     $fila = mysql_fetch_array($resultado);

@@ -6,6 +6,7 @@ switch ($seccion) {
     case "actividades":
     case "inscribete":
     case "hoteles":
+    case "ficha_inscripcion":
         $direccion = './php/' . $seccion . '.php';
         break;
     case "administrador":
