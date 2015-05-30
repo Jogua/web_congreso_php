@@ -116,6 +116,17 @@ function pedir_informacion_hotel(checkbox){
     document.getElementById("datos_hotel").innerHTML = datos;
 }
 
+function pedir_informacion_hotel2(checkbox){
+    pedir_informacion_hotel(checkbox);
+    var boton = document.getElementById("boton_reserva_hotel");
+    if(checkbox.checked){
+        boton.hidden = false;
+    }else{
+        boton.hidden = true;
+    }
+}
+
+
 function verificar_fecha_entrada(fecha) {
     var fecha_actual = new Date();
     var fecha_entrada = new Date(fecha.value);
