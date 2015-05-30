@@ -48,10 +48,12 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                 } else {
 
                     echo '<h2>Detalles de un congresista</h2>';
-                    echo '<div>';
+
                     echo 'Nombre: ' . $fila['nombre'] . '<br />';
                     echo 'Apellidos: ' . $fila['apellidos'] . '<br />';
+                    echo '<br>';
                     echo 'E-mail: ' . $fila['mail'] . '<br />';
+                    echo '<br>';
                     echo 'Cuota de usuario: ' . $fila['nombre_cuota'] . ' (' . $fila['importe'] . ' €)<br />';
                     echo '<ul>';
                     while ($fila_actividades = mysql_fetch_array($resultado_actividades)) {
@@ -62,11 +64,11 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                         echo '<li>' . $fila_actividades['nombre_actividad'] . ' (Incluída en la cuota de inscripción)</li>';
                     }
                     echo '</ul>';
+                    echo '<br>';
                     echo 'Importe total: ' . $precio_total . ' €';
                 }
             }
         }
-        
     } else {
         //busco todos los congresistas
         $consulta = 'SELECT * FROM usuario WHERE tipo_usuario!="Administrador"';
