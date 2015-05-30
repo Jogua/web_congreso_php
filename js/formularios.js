@@ -47,11 +47,11 @@ function validar_usuario(select) {
 function actualizar_actividades(usuario) {
     var act_incluidas_0 = [];
     var act_incluidas_1 = [];
-    var act_incluidas_2 = ["act_3", "act_4"];
+    var act_incluidas_2 = ["act_3"];
     var act_incluidas_3 = [];
 
     var actividad;
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 3; i++) {
         actividad = document.getElementById("act_" + i);
         actividad.checked = false;
         actividad.disabled = false;
