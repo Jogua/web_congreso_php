@@ -37,4 +37,6 @@ switch ($id) {
         include 'ponencias/interfaces_usuario.php';
         break;
 }
+
+echo '<a href="index.php?seccion=ponencias">Volver a ponencias</a>';
 ?>

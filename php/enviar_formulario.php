@@ -12,7 +12,8 @@ $mensaje = $nombre . ' ' . $apellidos . ' (' . $email . ') ha escrito el siguien
 
 if (enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje)) {
     $mensaje = $nombre . ' ' . $apellidos . ' tu consulta ha sido recibida correctamente. 
-    Le contestaremos lo antes posible.';
+    Le contestaremos lo antes posible.
+    <br> Su consulta ha sido: <br> <i>"' . $_POST['mensaje'] . '"</i>';
 
     enviarMail($email, $asunto, $mensaje); //si este falla no nos importa, ya que es una respuesta automatica al usuario
     echo "<script>
