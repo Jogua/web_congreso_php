@@ -215,18 +215,15 @@ aparezcan negros y sin subrayar */
     width:325px; 
     padding:5px 8px;
 }
-.formulario textarea {
+textarea {
     padding:8px; 
-    width:325px;
+    resize: none;
 }
 .formulario button {
     margin-left:125px;
 }
 
-#text_area_descripcion{
-    resize: none;
-    padding: 20px;
-}
+
 /*
  * Estilos Formulario de Inscripción
  */
@@ -259,10 +256,6 @@ aparezcan negros y sin subrayar */
     height:20px; 
     width:325px; 
     padding:5px 8px;
-}
-.formularioInscripcion textarea {
-    padding:8px; 
-    width:325px;
 }
 
 .formularioInscripcion select{
@@ -363,6 +356,25 @@ button.submit:active {
     text-align: center;
     margin-top: 5px;
 }
+
+/*
+ * Tabla de Cuotas
+ */
+
+#cuotas thead {
+    color: white;
+    background-color: green;
+}
+
+#cuotas a{
+    text-decoration: none;
+    color: black;
+}
+
+#cuotas td{
+    padding: 10px;
+}
+
 
 /*
  * Detalle de las ponencias
