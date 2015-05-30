@@ -12,6 +12,7 @@ if (isset($_SESSION['mail'])) {
     . '(' . $_SESSION['tipo_usuario'] . ')<br /><br />';
     if ($_SESSION['tipo_usuario'] == "Administrador") {
         echo '<a href="index.php?seccion=administrador">Ver congresistas</a><br /><br />';
+        echo '<a href="index.php?seccion=cuotas">Ver cuotas</a><br /><br />';
     }else if ($_SESSION['tipo_usuario'] == "Congresista") {
         echo '<a href="index.php?seccion=ficha_inscripcion">Ver inscripción</a><br /><br />';
     }

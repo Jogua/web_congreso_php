@@ -26,7 +26,6 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
             <td class="columnaPonencias centrar">Apellidos</td>
             <td class="columnaPonencias centrar">Nombre</td>
             <td class="columnaPonencias centrar">E-Mail</td>
-            <td class="columnaPonencias centrar">Tipo usuario</td>
             </thead>
             <tbody>';
 
@@ -36,8 +35,6 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                 echo '<td><a href="index.php?seccion=ficha_inscripcion&congresista=' . $fila['id_usuario'] . '">' . $fila['apellidos'] . '</a></td>';
                 echo '<td><a href="index.php?seccion=ficha_inscripcion&congresista=' . $fila['id_usuario'] . '">' . $fila['nombre'] . '</a></td>';
                 echo '<td><a href="index.php?seccion=ficha_inscripcion&congresista=' . $fila['id_usuario'] . '">' . $fila['mail'] . '</a></td>';
-                echo '<td><a href="index.php?seccion=ficha_inscripcion&congresista=' . $fila['id_usuario'] . '">' . $fila['tipo_usuario'] . '</a></td>';
-
                 echo "</tr>";
             }
             echo "</tbody>";

@@ -44,7 +44,7 @@ include_once 'conexion_bd.php';
                 $resultado_cuotas = conexionBD($consulta_cuotas);
                 if ($resultado_cuotas) {
                     while ($fila = mysql_fetch_array($resultado_cuotas)) {
-                        echo '<option value="' . $fila['id_cuota'] . '" Title="' . $fila['descripcion'] . '">'
+                        echo '<option value="' . $fila['id_cuota'] . '" title="' . $fila['descripcion'] . '">'
                         . $fila['nombre_cuota'] . ' -> (' . $fila['importe'] . ' €)</option>';
                     }
                 }

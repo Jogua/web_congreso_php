@@ -13,6 +13,9 @@ switch ($seccion) {
     case "administrador":
         $direccion = './php/opciones_administrador.php';
         break;
+    case "cuotas":
+        $direccion = './php/editar_cuotas.php';
+        break;
     default:
         $direccion = './html/' . $seccion . '.html';
         break;
