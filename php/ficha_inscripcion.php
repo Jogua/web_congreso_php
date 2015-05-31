@@ -108,7 +108,7 @@ if (!$resultado) {
                             <div id="datos_hotel">
 
                             </div>
-                            <button id="boton_reserva_hotel" hidden> Comprobar Hoteles </button>
+                            <button type="submit" class="submit" id="boton_reserva_hotel" hidden> Comprobar Hoteles </button>
                         </form>
                         <?php
                     }

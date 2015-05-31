@@ -376,7 +376,7 @@ button.submit:active {
 
 #cuotas thead {
     color: white;
-    background-color: blue;
+    background-color: green;
 }
 
 #cuotas a{
@@ -386,10 +386,6 @@ button.submit:active {
 
 #cuotas td{
     padding: 5px;
-}
-
-#cuotas tbody tr:hover{
-    background-color: lightblue;
 }
 
 /*
