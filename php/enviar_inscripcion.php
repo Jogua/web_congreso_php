@@ -33,7 +33,7 @@ $actividadesInscritas = "";
 $consulta_cuotas = "SELECT * FROM cuota WHERE id_cuota=" . $id_cuota;
 $resultado_cuotas = conexionBD($consulta_cuotas);
 if ($resultado_cuotas) {
-    
+
     $fila_cuota = mysql_fetch_array($resultado_cuotas);
     switch ($fila_cuota['nombre_cuota']) {
         case "Profesor":
@@ -114,12 +114,16 @@ if ($resultado_cuotas) {
             alert('Se ha inscrito correctamente.');
             location.href='../index.php?seccion=inscribete';
         </script>";
-    }else{
-        echo "<script>
-            alert('Se ha inscrito correctamente.');
-            location.href='../index.php?seccion=hoteles&ini=" . $_POST['fecha_entrada'] . "&fin=" . $_POST['fecha_salida']
-                . "&hab=" . $_POST['n_habitaciones'] . "&hues=" . $_POST['n_huespedes'] . "';" .
-        "</script>";
+    } else {
+        $tipo_hab = $_POST["habitacion"];
+        $hotel = $_POST["hotel_" . $tipo_hab];
+        $precio = $_POST["precio_" . $tipo_hab];
+        reservarHabitacion($hotel, $tipo_hab, $precio, $mail);
+//        echo "<script>
+//            alert('Se ha inscrito correctamente.');
+//            location.href='../index.php?seccion=hoteles&ini=" . $_POST['fecha_entrada'] . "&fin=" . $_POST['fecha_salida']
+//        . "&hab=" . $_POST['n_habitaciones'] . "&hues=" . $_POST['n_huespedes'] . "';" .
+//        "</script>";
     }
 }
 
@@ -159,4 +163,55 @@ function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_
         return false;
     }
 }
+
+function reservarHabitacion($hotel, $tipo_hab, $precio, $mail) {
+
+    $url = "localhost/GranaHome_php/reserva/f_inicio/20150601/f_fin/20150603/hotel/" . $hotel . "/hab/" . $tipo_hab . "/num/1";
+    $parametros_post = "usuario=" . $mail;
+
+    $sesion = curl_init($url);
+    // definir tipo de petición a realizar: POST
+    curl_setopt($sesion, CURLOPT_POST, true);
+    // Le pasamos los parámetros definidos anteriormente
+    curl_setopt($sesion, CURLOPT_POSTFIELDS, $parametros_post);
+    // sólo queremos que nos devuelva la respuesta
+    curl_setopt($sesion, CURLOPT_HEADER, false);
+    curl_setopt($sesion, CURLOPT_RETURNTRANSFER, true);
+    // ejecutamos la petición
+    $respuesta = curl_exec($sesion);
+    // cerramos conexión
+    curl_close($sesion);
+
+    $decode = json_decode($respuesta);
+
+    if ($decode->exito) {
+        $consulta_usuario = "SELECT id_usuario FROM usuario WHERE mail='" . $mail . "'";
+        $resultado_usuario = conexionBD($consulta_usuario);
+        if (!$resultado_usuario) {
+            salir("Error de conexión", -3);
+        }
+        $fila_usuario = mysql_fetch_array($resultado_usuario);
+        $id_usuario = $fila_usuario['id_usuario'];
+
+        $insertar_reserva = "INSERT INTO usuario_reserva_hotel VALUES (" . $id_usuario . ", '"
+                . $decode->nombre_hotel . "', '" . $decode->nombre_habitacion . "', "
+                . "'2015-06-01', '2015-06-03', 1, " . $precio . ")";
+        $resultado_insertar_reserva = conexionBD($insertar_reserva);
+
+        if (!$resultado_insertar_reserva) {
+            salir("Error de conexión", -3);
+        }
+
+        echo "<script type='text/javascript'>
+            alert('Su reserva se ha realizado correctamente.');
+            location.href='../index.php';
+        </script>";
+    } else {
+        echo "<script type='text/javascript'>
+            alert('No se ha podido reservar la habiación.');
+            location.href='../index.php?seccion=ficha_inscripcion';
+        </script>";
+    }
+}
+
 ?>

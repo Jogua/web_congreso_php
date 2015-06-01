@@ -241,6 +241,10 @@ aparezcan negros y sin subrayar */
  * Estilos Formulario de Inscripción
  */
 
+#div_error_inscripcion{
+    color:red;
+}
+
 .formularioInscripcion{
     margin-bottom: 50px;
 }
@@ -299,6 +303,11 @@ aparezcan negros y sin subrayar */
 }
 
 .formularioInscripcion #datos_hotel input{
+    width: 20px;
+    
+}
+
+.formularioInscripcion #datos_hotel label{
     width: auto;
 }
 
@@ -313,6 +322,10 @@ aparezcan negros y sin subrayar */
 
 .formularioInscripcion button {
     margin-left: 170px;
+}
+
+.formularioInscripcion .secundario {
+    margin-left: 30px;
 }
 
 /* estilos botones formulario */
