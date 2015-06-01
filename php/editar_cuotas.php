@@ -54,6 +54,7 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
             } else {
                 echo '<table id="cuotas">
             <thead class="negrita">
+            <td></td>
             <td class="centrar">Nombre</td>
             <td class="centrar">Descripción</td>
             <td class="centrar">Importe</td>
@@ -63,9 +64,10 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
                 //saco los datos de cada cuota
                 while ($fila = mysql_fetch_array($resultado)) {
                     echo "<tr>";
-                    echo '<td class="centrar"><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['nombre_cuota'] . '</a></td>';
-                    echo '<td><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['descripcion'] . '</a></td>';
-                    echo '<td class="centrar"><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '">' . $fila['importe'] . ' €</a></td>';
+                    echo '<td><a href="index.php?seccion=cuotas&id=' . $fila['id_cuota'] . '"> Editar   </a></td>';
+                    echo '<td class="centrar">' . $fila['nombre_cuota'] . '</td>';
+                    echo '<td>' . $fila['descripcion'] . '</td>';
+                    echo '<td class="centrar">' . $fila['importe'] . ' €</td>';
                     echo "</tr>";
                 }
                 echo "</tbody>";
