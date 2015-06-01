@@ -302,6 +302,10 @@ aparezcan negros y sin subrayar */
     width: auto;
 }
 
+.formularioInscripcion #dato_busqueda_hotel input{
+    width: 150px;
+} 
+
 .formularioInscripcion #datos_hotel input{
     width: 20px;
     

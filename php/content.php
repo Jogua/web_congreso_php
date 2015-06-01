@@ -5,7 +5,6 @@ switch ($seccion) {
     case "detalle_visita":
     case "actividades":
     case "inscribete":
-    case "hoteles":
     case "editar_actividad":
     case "ficha_inscripcion":
         $direccion = './php/' . $seccion . '.php';
@@ -15,6 +14,9 @@ switch ($seccion) {
         break;
     case "cuotas":
         $direccion = './php/editar_cuotas.php';
+        break;
+    case "hoteles":
+        $direccion = './php/busqueda_hoteles.php';
         break;
     default:
         $direccion = './html/' . $seccion . '.html';

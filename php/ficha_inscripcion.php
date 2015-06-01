@@ -105,7 +105,7 @@ if (!$resultado) {
                                 </li>
                             </ul>
                             <br>
-                            <div id="datos_hotel">
+                            <div id="dato_busqueda_hotel">
 
                             </div>
                             <button type="submit" class="submit" id="boton_reserva_hotel" hidden> Comprobar Hoteles </button>

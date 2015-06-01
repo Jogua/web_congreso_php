@@ -96,7 +96,6 @@ function actualizar_precio() {
 }
 
 function pedir_informacion_hotel(checkbox) {
-    alert(checkbox.checked);
     var datos = "";
     if (checkbox.checked) {
         datos = '<ul>' +
@@ -118,7 +117,7 @@ function pedir_informacion_hotel(checkbox) {
                 '</li>' +
                 '</ul>';
     }
-    document.getElementById("datos_hotel").innerHTML = datos;
+    document.getElementById("dato_busqueda_hotel").innerHTML = datos;
 }
 
 
@@ -261,6 +260,13 @@ function check_activar_paso3() {
 
 function mostrar_hoteles(checkbox) {
     document.getElementById("datos_hotel").hidden = !checkbox.checked;
+    if(!checkbox.checked){
+        actualizar_precio();
+    }
+    var habitaciones = document.getElementsByName("habitacion");
+    for(var i=0; i<habitaciones.length; i++){
+        habitaciones[i].checked = false;
+    }
 }
 
 function sumar_precio_hotel(precio_hotel) {
