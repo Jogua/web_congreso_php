@@ -69,9 +69,10 @@ if ($resultado_cuotas) {
         $resultado_actividades = conexionBD($consulta_actividades);
         if ($resultado_actividades) {
             if (mysql_num_rows($resultado_actividades) > 0) {
-                $actividadesInscritas = 'Además, has reservado plaza en las siguientes actividades: <br/><br/>';
+                $actividadesInscritas = 'Ha confirmado su plaza en las siguientes actividades: <br/><br/>';
                 $insertar_actividades_elegidas = "INSERT INTO usuario_tiene_actividad VALUES ";
                 $actividades_extras = 0;
+                //Aqui se definen las actividades que te has inscrito pero que no pertenecen a tu cuota
                 while ($fila_actividades = mysql_fetch_array($resultado_actividades)) {
                     if (in_array("act_" + $fila_actividades['id_actividad'], $actividades)) {
                         $actividadesInscritas = $actividadesInscritas . "     - " . $fila_actividades['nombre_actividad'] . ".<br/>";
@@ -97,6 +98,7 @@ if ($resultado_cuotas) {
             $resultado_actividades = conexionBD($consulta_actividades);
             if ($resultado_actividades) {
                 if (mysql_num_rows($resultado_actividades) > 0) {
+                    //Aqui se definen las actividades que pertenecen a tu cuota.
                     while ($fila_actividades = mysql_fetch_array($resultado_actividades)) {
                         $actividadesInscritas = $actividadesInscritas . "     - " . $fila_actividades['nombre_actividad'] . ".<br/>";
                     }
@@ -107,9 +109,8 @@ if ($resultado_cuotas) {
 
     iniciarSesion($mail);
 
-    enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, $precio);
-
     if (!$quiere_hotel) {
+        enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, "", $precio);
         echo "<script>
             alert('Se ha inscrito correctamente.');
             location.href='../index.php?seccion=inscribete';
@@ -117,13 +118,22 @@ if ($resultado_cuotas) {
     } else {
         $tipo_hab = $_POST["habitacion"];
         $hotel = $_POST["hotel_" . $tipo_hab];
-        $precio = $_POST["precio_" . $tipo_hab];
-        reservarHabitacion($hotel, $tipo_hab, $precio, $mail);
-//        echo "<script>
-//            alert('Se ha inscrito correctamente.');
-//            location.href='../index.php?seccion=hoteles&ini=" . $_POST['fecha_entrada'] . "&fin=" . $_POST['fecha_salida']
-//        . "&hab=" . $_POST['n_habitaciones'] . "&hues=" . $_POST['n_huespedes'] . "';" .
-//        "</script>";
+        $precio_hotel = $_POST["precio_" . $tipo_hab];
+        $precio += $precio_hotel;
+        if (reservarHabitacion($hotel, $tipo_hab, $precio_hotel, $mail, $nombre_hotel, $nombre_habitacion)) {
+            $datos_hotel = "<br>Tiene reservada 1 Habitación para las fechas 01-06-2015 al 03-06-2015, con las siguientes características:<br>"
+                    . "Nombre del hotel: " . $nombre_hotel . "<br>Tipo de habitación: " . $nombre_habitacion . "<br>";
+            enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, $datos_hotel, $precio);
+            echo "<script type='text/javascript'>
+                alert('Su reserva se ha realizado correctamente.');
+                location.href='../index.php';
+            </script>";
+        }else{
+            echo "<script type='text/javascript'>
+                alert('No se ha podido reservar la habiación.');
+                location.href='../index.php?seccion=ficha_inscripcion';
+            </script>";
+        }
     }
 }
 
@@ -140,22 +150,22 @@ function salir($str, $code) {
     exit($code);
 }
 
-function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_cuota, $universidad_str, $actividadesInscritas, $precio) {
+function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_cuota, $universidad_str, $actividadesInscritas, $datos_hotel, $precio) {
     $asunto = '[Mensaje de Web] Inscripción al congreso';
     $mensaje = 'Se ha inscrito al congreso en la categoria de '
             . $nombre_cuota . $universidad_str . '.<br/><br/>' . $actividadesInscritas
-            . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
+            . $datos_hotel . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
             . 'La forma de pago consiste en realizar una transferencia indicando su nombre de usuario al siguiente 
-            número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a "congresosCEIIE@gmail.com"
-            un justificante de dicho pago con el asunto "Confirmación pago #' . $id_usuario . '".<br/><br/>'
-            . '¡Nos vemos pronto!';
+            número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a 
+            "congresosCEIIE@gmail.com" un justificante de dicho pago con el asunto "Confirmación pago #' . $id_usuario
+            . '".<br/><br/>¡Nos vemos pronto!';
 
     if (enviarMail($mail, $asunto, $mensaje)) {
         $asunto = '[Mensaje de Web] Inscripción de usuario';
         $mensaje = $nombre . ' ' . $apellidos . ' con dirección de correo: <strong>' . $mail . '</strong> '
                 . 'se ha inscrito al congreso en la categoria de '
                 . $nombre_cuota . $universidad_str . '.<br/><br/>' . $actividadesInscritas
-                . '<br/> El precio total es de: ' . $precio . '€<br/><br/>';
+                . $datos_hotel . '<br/> El precio total es de: ' . $precio . '€<br/><br/>';
 
         enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje);
         return true;
@@ -164,7 +174,7 @@ function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_
     }
 }
 
-function reservarHabitacion($hotel, $tipo_hab, $precio, $mail) {
+function reservarHabitacion($hotel, $tipo_hab, $precio, $mail, &$nombre_hotel, &$nombre_habitacion) {
 
     $url = "localhost/GranaHome_php/reserva/f_inicio/20150601/f_fin/20150603/hotel/" . $hotel . "/hab/" . $tipo_hab . "/num/1";
     $parametros_post = "usuario=" . $mail;
@@ -198,19 +208,15 @@ function reservarHabitacion($hotel, $tipo_hab, $precio, $mail) {
                 . "'2015-06-01', '2015-06-03', 1, " . $precio . ")";
         $resultado_insertar_reserva = conexionBD($insertar_reserva);
 
+        $nombre_hotel = $decode->nombre_hotel;
+        $nombre_habitacion = $decode->nombre_habitacion;
+
         if (!$resultado_insertar_reserva) {
             salir("Error de conexión", -3);
         }
-
-        echo "<script type='text/javascript'>
-            alert('Su reserva se ha realizado correctamente.');
-            location.href='../index.php';
-        </script>";
+        return true;
     } else {
-        echo "<script type='text/javascript'>
-            alert('No se ha podido reservar la habiación.');
-            location.href='../index.php?seccion=ficha_inscripcion';
-        </script>";
+        return false;
     }
 }
 

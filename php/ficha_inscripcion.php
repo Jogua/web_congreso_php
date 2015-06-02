@@ -94,24 +94,6 @@ if (!$resultado) {
             if ($resultado_hotel) {
                 if (mysql_num_rows($resultado_hotel) == 0) {
                     echo '<h2>No se ha reservado ningún alojamiento</h2>';
-                    if ($tipo_usuario == 'Congresista') {
-                        ?>
-                        <form class="formularioInscripcion" method="post" action="php/usuario_reserva.php">
-
-                            <ul class="inscripcion_checkbox">
-                                <li>
-                                    <input type="checkbox" id="hotel" name="hotel" onchange="pedir_informacion_hotel2(this)"/>
-                                    <label for="hotel">¿Quieres reservar un Hotel?</label>
-                                </li>
-                            </ul>
-                            <br>
-                            <div id="dato_busqueda_hotel">
-
-                            </div>
-                            <button type="submit" class="submit" id="boton_reserva_hotel" hidden> Comprobar Hoteles </button>
-                        </form>
-                        <?php
-                    }
                 } else {
                     $fila_hotel = mysql_fetch_array($resultado_hotel);
                     echo '<h2>Detalles del alojamiento</h2>';

@@ -65,7 +65,7 @@ include_once 'conexion_bd.php';
             </li>
             <li id="universidad" hidden>
                 <label for="universidad"> Universidad:</label>
-                <input type="text" name="universidad" required/>
+                <input type="text" name="universidad"/>
             </li>
             <li>
                 <label for="actividades">Actividades:</label>
@@ -107,6 +107,7 @@ include_once 'conexion_bd.php';
                 </ul>
                 <br>
                 <div id="datos_hotel" hidden>
+                    <h3>Reserva desde el 01/06/2015 al 03/06/2015</h3>
                     <?php
                     include 'hoteles.php';
                     ?>
