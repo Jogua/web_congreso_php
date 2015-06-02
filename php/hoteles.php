@@ -8,10 +8,7 @@ $url = "localhost/GranaHome_php/hoteles/Granada/f_inicio/20150601/f_fin/20150603
 $sesion = curl_init($url);
 // definir tipo de petición a realizar: POST
 curl_setopt($sesion, CURLOPT_POST, false);
-// Le pasamos los parámetros definidos anteriormente
-//curl_setopt ($sesion, CURLOPT_POSTFIELDS, $parametros_post); 
 // sólo queremos que nos devuelva la respuesta
-//curl_setopt($sesion, CURLOPT_HEADER, false); 
 curl_setopt($sesion, CURLOPT_RETURNTRANSFER, true);
 // ejecutamos la petición
 $respuesta = curl_exec($sesion);
