@@ -4,7 +4,7 @@ include 'conexion_bd.php';
 include 'enviar_mail.php';
 session_start();
 //comprobación de que el password existente era correcto
-$consulta = 'SELECT password,mail FROM usuario WHERE password="' . $_POST['password_actual'] . '"';
+$consulta = 'SELECT password,mail FROM usuario WHERE password="' . $_POST['password_actual'] . '" AND mail="' . $_SESSION['mail'] . '"';
 
 //Envio la consulta a MySQL.
 $resultado = conexionBD($consulta);
@@ -19,7 +19,7 @@ if (mysql_num_rows($resultado) == 0) {
 
     enviarMail($fila['mail'], "[CEIIE] Cambio de contraseña", $mensaje);
 
-    $update = 'UPDATE usuario SET password="' . $_POST['contrasena'] . '" WHERE password="' . $_POST['password_actual'] . '"';
+    $update = 'UPDATE usuario SET password="' . $_POST['contrasena'] . '" WHERE mail="' . $_SESSION['mail'] . '"';
     $resultado = conexionBD($update);
 
     header('Location: ' . $_SERVER['HTTP_REFERER'] . '#password_correcto');
