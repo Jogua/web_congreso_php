@@ -4,7 +4,7 @@ $dias = 2;
 
 $url = "localhost/GranaHome_php/hoteles/Granada/f_inicio/20150601/f_fin/20150603/hab/1/huespedes/2";
 //echo $url;
-//echo "<br>";
+
 $sesion = curl_init($url);
 // definir tipo de petición a realizar: POST
 curl_setopt($sesion, CURLOPT_POST, false);
