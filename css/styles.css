@@ -427,13 +427,12 @@ button.submit:active {
  * Extras
  */
 
-#precio_total{
+#precio_parcial{
     /*background: transparent url("//cdn.euroinnova.edu.es/euroinnova_es/img/skype-01.png") no-repeat scroll 9px 0px;*/
     background: transparent no-repeat scroll 9px 0px;
-    height: 100px;
     position: fixed !important;
     left: 0px;
-    bottom: 50%;
+    top: 20%;
     width: 150px;
     z-index: 997;
     display: block;

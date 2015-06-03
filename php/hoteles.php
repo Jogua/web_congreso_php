@@ -40,7 +40,7 @@ for ($i = 0; $i < count($decode); $i++) {
         echo '<input type="hidden" name="precio_' . $id_tipo_habitacion . '" value="' . $precio . '"/>';
         echo '<h4> ' . $decode[$i]->detalle_tipo[$j]->nombre_tipo . ' </h4>';
         echo '<ul><li>';
-        echo '<input type="radio" id="habitacion_' . $id_tipo_habitacion . '" name="habitacion" value="' . $id_tipo_habitacion . '" onchange="sumar_precio_hotel(' . $precio . ')"/>';
+        echo '<input type="radio" id="habitacion_' . $id_tipo_habitacion . '" name="habitacion" value="' . $id_tipo_habitacion . '" onchange="cambiar_precio_alojamiento(' . $precio . ')"/>';
         echo '<label for="habitacion_' . $id_tipo_habitacion . '">';
         echo "1 habitación para " . $decode[$i]->detalle_tipo[$j]->capacidad . ' personas -> ' . $precio . ' € <br>';
         echo '</label>';

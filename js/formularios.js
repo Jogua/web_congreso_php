@@ -67,34 +67,6 @@ function actualizar_actividades(usuario) {
     }
 }
 
-//function calcular_precio_actividades_cuota() {
-//    var precio;
-//
-//    var usuario = document.getElementById("cuota").value;
-//    if (usuario == "1") {//Invitado
-//        precio = 50;
-//    } else if (usuario == "2") { // Profesor
-//        precio = 45;
-//    } else if (usuario == "3") { // Estudiante
-//        precio = 25;
-//    }
-//
-//    var precio_actividades = [25, 15, 30];
-//    var actividad;
-//    for (var i = 1; i <= 3; i++) {
-//        actividad = document.getElementById("act_" + i);
-//        if (actividad.checked && !actividad.disabled) {
-//            precio += precio_actividades[i - 1];
-//        }
-//    }
-//    return precio;
-//}
-//
-//function actualizar_precio() {
-//    var precio = calcular_precio_actividades_cuota();
-//    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
-//}
-
 function activar_paso1() {
     document.getElementById('div_datos_personales').hidden = false;
     document.getElementById('div_cuotas_actividades').hidden = true;
@@ -148,15 +120,15 @@ function check_activar_paso2() {
         correcto = false;
     }
     div_error.innerHTML = mensaje_error;
-//    if (correcto) {
+    if (correcto) {
         activar_paso2();
-//    }
+    }
 }
 
 function mostrar_hoteles(checkbox) {
     document.getElementById("datos_hotel").hidden = !checkbox.checked;
     if(!checkbox.checked){
-        actualizar_precio();
+        cambiar_precio_alojamiento(0);
     }
     var habitaciones = document.getElementsByName("habitacion");
     for(var i=0; i<habitaciones.length; i++){

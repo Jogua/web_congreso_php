@@ -20,15 +20,13 @@ if ($resultado_actividades) {
             echo '<li>';
             $esta = in_array($fila['id_actividad'], $actividades_incluidas);
             if ($esta) {
-                echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades[]" value=' . $fila['id_actividad'] . ' onchange="activar_foto(' . $fila['id_actividad'] . ');" checked disabled/>';
-            } else {
-                echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades[]" value=' . $fila['id_actividad'] . ' onchange="activar_foto(' . $fila['id_actividad'] . ');" />';
-            }
-            echo '<label for="act_' . $fila['id_actividad'] . '"> ' . $fila['nombre_actividad'] . " (" . $fila['importe'] . " €)" . '</label>';
-            if($esta){
+                echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades[]" value=' . $fila['id_actividad'] . ' checked disabled/>';
+                echo '<label for="act_' . $fila['id_actividad'] . '"> ' . $fila['nombre_actividad'] . ' (Incluida en la cuota)</label>';
                 echo '<br><br>';
-                echo '<img class="borde_blanco imagen_actividad_peque" src="' . $fila['url_foto'] . '" alt="Foto actividad" />'; 
-            }else{
+                echo '<img class="borde_blanco imagen_actividad_peque" src="' . $fila['url_foto'] . '" alt="Foto actividad" />';
+            } else {
+                echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades[]" value=' . $fila['id_actividad'] . ' onchange="cambiar_precio_actividades(this,' . $fila['id_actividad'] . '); activar_foto(' . $fila['id_actividad'] . ');" />';
+                echo '<label for="act_' . $fila['id_actividad'] . '"> ' . $fila['nombre_actividad'] . " (" . $fila['importe'] . " €)" . '</label>';
                 echo '<div id="foto_actividad_' . $fila['id_actividad'] . '" hidden></div>';
             }
             echo '</li>';

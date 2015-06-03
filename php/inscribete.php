@@ -74,7 +74,7 @@ include_once 'conexion_bd.php';
                     if ($resultado_actividades) {
                         while ($fila = mysql_fetch_array($resultado_actividades)) {
                             echo '<li>';
-                            echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades[]" value=' . $fila['id_actividad'] . ' onchange="activar_foto(' . $fila['id_actividad'] . ');" />';
+                            echo '<input id="act_' . $fila['id_actividad'] . '" type="checkbox" name="actividades" value=' . $fila['id_actividad'] . ' onchange="cambiar_precio_actividades(this,' . $fila['id_actividad'] . '); activar_foto(' . $fila['id_actividad'] . ');"/>';
                             echo '<label for="act_' . $fila['id_actividad'] . '"> ' . $fila['nombre_actividad'] . " (" . $fila['importe'] . " €)" . '</label>';
                             echo '<div id="foto_actividad_' . $fila['id_actividad'] . '" hidden></div>';
                             echo '</li>';
@@ -114,16 +114,12 @@ include_once 'conexion_bd.php';
                 <button type="submit" class="submit secundario">Finalizar</button>
             </li>
         </ul>
-        <ul>
-            <li id="precio2" class="centrar" >
-                Precio (Inscripción + Actividades + Alojamiento): 50€ 
-            </li>
-        </ul>
     </div>
-    <div id="precio_total">
+    <div id="precio_parcial">
         <ul>
             <li id="precio" class="centrar" hidden>
-                Precio Total: <br> 50€ 
+                -- Precios -- <br><br> Congreso: <br> 50 € <br><br> Actividades: <br> 0 € <br><br>
+                Alojamiento: <br> 0 € <br><br> Total: <br> 50 €
             </li>
         </ul>
     </div>
