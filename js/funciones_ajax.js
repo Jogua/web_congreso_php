@@ -56,14 +56,27 @@ function activar_foto(id_actividad) {
 //    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
 //}
 
-function calcular_precio_congreso(){
-    
+function calcular_precio_congreso() {
+
 }
 
-function calcular_precio_alojamiento(){
-    
+function calcular_precio_alojamiento() {
+
 }
 
-function actualizar_precio_total(){
-    
+function actualizar_precio_total() {
+
+}
+
+function actualizar_congresistas(apellidos) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("busqueda_congresistas").innerHTML = xmlhttp.responseText;
+        }
+    };
+    xmlhttp.open("POST", "php/actualizar_congresistas.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var parametros = "apellidos="+apellidos;
+    xmlhttp.send(parametros);
 }

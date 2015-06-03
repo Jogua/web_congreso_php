@@ -21,13 +21,15 @@ if ($_SESSION['tipo_usuario'] == "Administrador") {
         if (mysql_num_rows($resultado) == 0) {
             echo 'Actualmente no hay congresistas inscritos en el congreso.';
         } else {
+            echo 'Búsqueda por apellidos: ';
+            echo '<input type="search" name="buscar" onkeyup="actualizar_congresistas(this.value);" size="36" /><br><br>';
             echo '<table id="ponencias">
             <thead class="negrita">
             <td class="columnaPonencias centrar">Apellidos</td>
             <td class="columnaPonencias centrar">Nombre</td>
             <td class="columnaPonencias centrar">E-Mail</td>
             </thead>
-            <tbody>';
+            <tbody id="busqueda_congresistas">';
 
             //saco el nombre y apellidos de cada congresista
             while ($fila = mysql_fetch_array($resultado)) {
