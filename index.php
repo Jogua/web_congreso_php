@@ -23,6 +23,7 @@ if (isset($_GET['id'])) {
         <!-- script para slider de patrocinadores -->
         <script src="js/slider.js"></script>
         <script src="js/formularios.js"></script>  
+        <script src="js/funciones_ajax.js"></script>  
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
         <?php
         include './php/conexion_bd.php';
