@@ -320,7 +320,6 @@ aparezcan negros y sin subrayar */
     font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
-    margin-left: 150px;
     padding: 3px 3px 3px 0px;
 }
 
@@ -428,8 +427,26 @@ button.submit:active {
  * Extras
  */
 
+#precio_total{
+    /*background: transparent url("//cdn.euroinnova.edu.es/euroinnova_es/img/skype-01.png") no-repeat scroll 9px 0px;*/
+    background: transparent no-repeat scroll 9px 0px;
+    height: 100px;
+    position: fixed !important;
+    left: 0px;
+    bottom: 50%;
+    width: 150px;
+    z-index: 997;
+    display: block;
+}
+
 #imagenActividad{
     margin: 25px 0 25px 0;    
+}
+
+.imagen_actividad_peque{
+    -ms-interpolation-mode: bicubic;
+    /*max-width: 200px;*/
+    max-height: 150px;
 }
 
 .negrita{

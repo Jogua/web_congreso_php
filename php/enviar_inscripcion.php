@@ -16,12 +16,6 @@ if (isset($_POST['actividades'])) {
     $actividades = $_POST['actividades'];
 }
 
-if (isset($_POST['universidad'])) {
-    $universidad = $_POST['universidad'];
-} else {
-    $universidad = "";
-}
-
 if (isset($_POST['hotel'])) {
     $quiere_hotel = true;
 } else {
@@ -35,19 +29,11 @@ $resultado_cuotas = conexionBD($consulta_cuotas);
 if ($resultado_cuotas) {
 
     $fila_cuota = mysql_fetch_array($resultado_cuotas);
-    switch ($fila_cuota['nombre_cuota']) {
-        case "Profesor":
-        case "Estudiante":
-            $universidad_str = ' de ' . $universidad;
-            break;
-        default:
-            $universidad_str = $universidad;
-            break;
-    }
+    
     $precio = $fila_cuota['importe'];
 
-    $insertar_usuario = "INSERT INTO usuario (nombre, apellidos, centro_trabajo, telefono, mail, password, cuota_inscripcion, tipo_usuario) VALUES "
-            . "('" . $nombre . "', '" . $apellidos . "', '" . $universidad . "', '" . $telefono . "', '" . $mail . "', "
+    $insertar_usuario = "INSERT INTO usuario (nombre, apellidos, telefono, mail, password, cuota_inscripcion, tipo_usuario) VALUES "
+            . "('" . $nombre . "', '" . $apellidos . "', '" . $telefono . "', '" . $mail . "', "
             . "'" . $password . "', " . $id_cuota . ", 'Congresista')";
 
     $resultado_insert = conexionBD($insertar_usuario);
@@ -110,7 +96,7 @@ if ($resultado_cuotas) {
     iniciarSesion($mail);
 
     if (!$quiere_hotel) {
-        enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, "", $precio);
+        enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $actividadesInscritas, "", $precio);
         echo "<script>
             alert('Se ha inscrito correctamente.');
             location.href='../index.php?seccion=inscribete';
@@ -123,7 +109,7 @@ if ($resultado_cuotas) {
         if (reservarHabitacion($hotel, $tipo_hab, $precio_hotel, $mail, $nombre_hotel, $nombre_habitacion)) {
             $datos_hotel = "<br>Tiene reservada 1 Habitación para las fechas 01-06-2015 al 03-06-2015, con las siguientes características:<br>"
                     . "Nombre del hotel: " . $nombre_hotel . "<br>Tipo de habitación: " . $nombre_habitacion . "<br>";
-            enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $universidad_str, $actividadesInscritas, $datos_hotel, $precio);
+            enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $fila_cuota['nombre_cuota'], $actividadesInscritas, $datos_hotel, $precio);
             echo "<script type='text/javascript'>
                 alert('Su reserva se ha realizado correctamente.');
                 location.href='../index.php';
@@ -150,10 +136,10 @@ function salir($str, $code) {
     exit($code);
 }
 
-function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_cuota, $universidad_str, $actividadesInscritas, $datos_hotel, $precio) {
+function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_cuota, $actividadesInscritas, $datos_hotel, $precio) {
     $asunto = '[Mensaje de Web] Inscripción al congreso';
     $mensaje = 'Se ha inscrito al congreso en la categoria de '
-            . $nombre_cuota . $universidad_str . '.<br/><br/>' . $actividadesInscritas
+            . $nombre_cuota . '.<br/><br/>' . $actividadesInscritas
             . $datos_hotel . '<br/> El precio total es de: ' . $precio . '€<br/><br/>'
             . 'La forma de pago consiste en realizar una transferencia indicando su nombre de usuario al siguiente 
             número de cuenta: <br/><br/> 2100 4323 54 2516300484 <br/><br/> Tras realizar la transferencia debe enviar a 
@@ -164,7 +150,7 @@ function enviarMailInscripcion($id_usuario, $nombre, $apellidos, $mail, $nombre_
         $asunto = '[Mensaje de Web] Inscripción de usuario';
         $mensaje = $nombre . ' ' . $apellidos . ' con dirección de correo: <strong>' . $mail . '</strong> '
                 . 'se ha inscrito al congreso en la categoria de '
-                . $nombre_cuota . $universidad_str . '.<br/><br/>' . $actividadesInscritas
+                . $nombre_cuota . '.<br/><br/>' . $actividadesInscritas
                 . $datos_hotel . '<br/> El precio total es de: ' . $precio . '€<br/><br/>';
 
         enviarMail('congresoCEIIE@gmail.com', $asunto, $mensaje);

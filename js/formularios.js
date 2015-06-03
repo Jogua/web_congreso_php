@@ -67,33 +67,33 @@ function actualizar_actividades(usuario) {
     }
 }
 
-function calcular_precio_actividades_cuota() {
-    var precio;
-
-    var usuario = document.getElementById("cuota").value;
-    if (usuario == "1") {//Invitado
-        precio = 50;
-    } else if (usuario == "2") { // Profesor
-        precio = 45;
-    } else if (usuario == "3") { // Estudiante
-        precio = 25;
-    }
-
-    var precio_actividades = [25, 15, 30];
-    var actividad;
-    for (var i = 1; i <= 3; i++) {
-        actividad = document.getElementById("act_" + i);
-        if (actividad.checked && !actividad.disabled) {
-            precio += precio_actividades[i - 1];
-        }
-    }
-    return precio;
-}
-
-function actualizar_precio() {
-    var precio = calcular_precio_actividades_cuota();
-    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
-}
+//function calcular_precio_actividades_cuota() {
+//    var precio;
+//
+//    var usuario = document.getElementById("cuota").value;
+//    if (usuario == "1") {//Invitado
+//        precio = 50;
+//    } else if (usuario == "2") { // Profesor
+//        precio = 45;
+//    } else if (usuario == "3") { // Estudiante
+//        precio = 25;
+//    }
+//
+//    var precio_actividades = [25, 15, 30];
+//    var actividad;
+//    for (var i = 1; i <= 3; i++) {
+//        actividad = document.getElementById("act_" + i);
+//        if (actividad.checked && !actividad.disabled) {
+//            precio += precio_actividades[i - 1];
+//        }
+//    }
+//    return precio;
+//}
+//
+//function actualizar_precio() {
+//    var precio = calcular_precio_actividades_cuota();
+//    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
+//}
 
 function activar_paso1() {
     document.getElementById('div_datos_personales').hidden = false;
@@ -151,24 +151,6 @@ function check_activar_paso2() {
 //    if (correcto) {
         activar_paso2();
 //    }
-}
-
-function check_activar_paso3() {
-    var correcto = true;
-    var formulario = document.getElementById("id_formulario_inscripcion");
-    var div_error = document.getElementById("div_error_inscripcion");
-    var mensaje_error = "";
-    var usuario = document.getElementById("cuota").value;
-    if (usuario == "2" || usuario == "3") {
-        if(formulario.universidad.value == ""){
-            mensaje_error = "Falta rellenar la universidad a la que pertenece."
-            correcto = false;
-        }
-    }
-    div_error.innerHTML = mensaje_error;
-    if (correcto) {
-        activar_paso3();
-    }
 }
 
 function mostrar_hoteles(checkbox) {
