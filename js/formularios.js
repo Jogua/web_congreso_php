@@ -148,9 +148,9 @@ function check_activar_paso2() {
         correcto = false;
     }
     div_error.innerHTML = mensaje_error;
-    if (correcto) {
+//    if (correcto) {
         activar_paso2();
-    }
+//    }
 }
 
 function check_activar_paso3() {
