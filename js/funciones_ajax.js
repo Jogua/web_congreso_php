@@ -72,14 +72,6 @@ function cambiar_precio_alojamiento(precio) {
     actualizar_precio_pantalla();
 }
 
-function actualizar_precio_total(id_actividad) {
-    var formulario = document.getElementById("id_formulario_inscripcion");
-    for (var i = 0; i < formulario.actividades.length; i++) {
-        if (formulario.actividades[i].checked) {
-            alert(formulario.actividades[i].value);
-        }
-    }
-}
 
 function actualizar_congresistas(apellidos) {
     var xmlhttp = new XMLHttpRequest();
