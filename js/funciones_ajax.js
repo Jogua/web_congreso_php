@@ -28,34 +28,6 @@ function activar_foto(id_actividad) {
     }
 }
 
-
-//function calcular_precio_actividades_cuota() {
-//    var precio;
-//
-//    var usuario = document.getElementById("cuota").value;
-//    if (usuario == "1") {//Invitado
-//        precio = 50;
-//    } else if (usuario == "2") { // Profesor
-//        precio = 45;
-//    } else if (usuario == "3") { // Estudiante
-//        precio = 25;
-//    }
-//
-//    var precio_actividades = [25, 15, 30];
-//    var actividad;
-//    for (var i = 1; i <= 3; i++) {
-//        actividad = document.getElementById("act_" + i);
-//        if (actividad.checked && !actividad.disabled) {
-//            precio += precio_actividades[i - 1];
-//        }
-//    }
-//    return precio;
-//}
-//
-//function actualizar_precio() {
-//    var precio = calcular_precio_actividades_cuota();
-//    document.getElementById("precio").innerHTML = "Precio Total: " + precio + "€";
-//}
 var precio_inscripcion = 50;
 var precio_actividades = 0;
 var precio_alojamiento = 0;
