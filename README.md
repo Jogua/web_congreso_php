@@ -1,4 +1,4 @@
-# web_congreso_php
+# Web Primer Congreso de Estudiantes de Ingeniería Informática de España
 
 Práctica de la asignatura Sistemas de Información Basados en Web.
 
